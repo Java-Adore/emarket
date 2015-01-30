@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<h:form xmlns:h="http://java.sun.com/jsf/html">
+		<table id="header" border="0" cellpadding="0" cellspacing="0"
+			align="center" xmlns:p="http://primefaces.org/ui">
+
+			<tr>
+				<td height="143" width="240"><a href="#"><p:graphicImage
+							name="images/logo.gif" width="200" height="37" border="0"
+							alt="Your company name" /></a></td>
+				<td width="403">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td><p:graphicImage name="images/c1.gif" width="5"
+									height="5" border="0" alt="" /></td>
+							<td style="background: url(resources/images/c_top.gif)"><p:graphicImage
+									name="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+							<td><p:graphicImage name="images/c2.gif" width="5"
+									height="5" border="0" alt="" /></td>
+						</tr>
+						<tr>
+							<td style="background: url(resources/images/c_left.gif)"><p:graphicImage
+									name="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+							<td width="393" align="center">
+								<table border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td><p:graphicImage name="images/spacer.gif" width="4"
+												height="1" border="0" alt="" /></td>
+										<td>
+											<div class="topmenu">
+												Choose<br /> your language:
+											</div>
+											<div style="padding: 2px">
+												<a href="#"><p:graphicImage name="images/language1.gif"
+														width="24" height="15" border="0" alt="" /></a><a href="#"><p:graphicImage
+														name="images/language2.gif" width="24" height="15"
+														border="0" alt="" hspace="4" /></a><a href="#"><p:graphicImage
+														name="images/language3.gif" width="24" height="15"
+														border="0" alt="" /></a>
+											</div> <p:graphicImage name="images/line_h1.gif" width="106"
+												height="1" border="0" alt="" vspace="5" />
+											<div class="topmenu">Currencies:</div>
+											<div style="padding: 5px 0 5px 0">
+												
+													<select name="curency" size="1" class="sel1">
+														<option value="$">$</option>
+														<option value="EUR">EUR</option>
+													</select>
+												
+											</div>
+										</td>
+										<td><p:graphicImage name="images/line_v1.gif" width="1"
+												height="86" border="0" alt="" hspace="9" /></td>
+										<td>
+												<div style="padding: 3px 0 3px 0">
+													<p:graphicImage name="images/ico.gif" width="9" height="7"
+														border="0" alt="" />
+													<a href="#" class="topmenu">Specials</a>
+												</div>
+												<div style="padding: 3px 0 3px 0">
+													<p:graphicImage name="images/ico.gif" width="9" height="7"
+														border="0" alt="" />
+													<a href="#" class="topmenu">#{loc.search}</a>
+												</div>
+												<div style="padding: 3px 0 3px 0">
+													<p:graphicImage name="images/ico.gif" width="9" height="7"
+														border="0" alt="" />
+													<p:commandLink styleClass="topmenu"
+														actionListener="#{helperBean.redirectTo('registration.xhtml')}">
+												#{loc.Create_an_account}
+											</p:commandLink>
+												</div>
+												<div style="padding: 3px 0 3px 0">
+													<p:graphicImage name="images/ico.gif" width="9" height="7"
+														border="0" alt="" />
+													<p:commandLink styleClass="topmenu"
+														actionListener="#{helperBean.redirectTo('login.xhtml')}">
+												#{loc.Customer_Login}
+											</p:commandLink>
+												</div>
+										</td>
+										<td><p:graphicImage name="images/line_v1.gif" width="1"
+												height="86" border="0" alt="" hspace="9" /></td>
+										<td>
+											<table border="0" cellpadding="0" cellspacing="0">
+												<tr>
+													<td><p:graphicImage name="images/sc.gif" width="40"
+															height="34" border="0" alt="" /></td>
+													<td><a href="#" class="top11">Shopping<br /> Cart
+													</a></td>
+												</tr>
+												<tr>
+													<td colspan="2"><p:graphicImage
+															name="images/spacer.gif" width="1" height="8" border="0"
+															alt="" /></td>
+												</tr>
+												<tr>
+													<td colspan="2"><div class="top11">
+															now in your cart <span class="or11">5 items</span>
+														</div></td>
+												</tr>
+											</table>
+										</td>
+
+									</tr>
+								</table>
+							</td>
+							<td style="background: url(resources/images/c_right.gif)"><p:graphicImage
+									name="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+						</tr>
+						<tr>
+							<td><p:graphicImage name="images/c4.gif" width="5"
+									height="5" border="0" alt="" /></td>
+							<td style="background: url(resources/images/c_bot.gif)"><p:graphicImage
+									name="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+							<td><p:graphicImage name="images/c3.gif" width="5"
+									height="5" border="0" alt="" /></td>
+						</tr>
+					</table>
+				</td>
+				<td><img id="spacer" src="images/spacer.gif" width="5"
+					height="1" border="0" alt="" /></td>
+			</tr>
+		</table>
+	</h:form>
+</body>
+</html>
