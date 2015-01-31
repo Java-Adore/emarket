@@ -7,24 +7,6 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProvider</provider> -->
 		<class>com.emarket.entity.Member</class>
-		<class>com.sums.entity.Cohort</class>
-		<class>com.sums.entity.Email</class>
-		<class>com.sums.entity.Finalproject</class>
-		<class>com.sums.entity.FinalProjectCohort</class>
-		<class>com.sums.entity.IdeaKind</class>
-		<class>com.sums.entity.IdeaStatus</class>
-		<class>com.sums.entity.Organization</class>
-		<class>com.sums.entity.Person</class>
-		<class>com.sums.entity.PersonCohortPersonRole</class>
-		<class>com.sums.entity.PersonRole</class>
-		<class>com.sums.entity.PersonStatus</class>
-		<class>com.sums.entity.Phone</class>
-		<class>com.sums.entity.ProjectIdea</class>
-		<class>com.sums.entity.ProjectIdeaHistory</class>
-		<class>com.sums.entity.Staff</class>
-		<class>com.sums.entity.StaffFinalProject</class>
-		<class>com.sums.entity.Student</class>
-		<class>com.sums.entity.Suspension</class>
 		
 
 		<properties>
@@ -39,13 +21,16 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" /> 
 			<property name="hibernate.show_sql" value="true" />
 			
-			
-        <property name="hibernate.c3p0.max_size" value="100" />
-        <property name="hibernate.c3p0.min_size" value="0" />
-        <property name="hibernate.c3p0.acquire_increment" value="1" />
-        <property name="hibernate.c3p0.idle_test_period" value="300" />
-        <property name="hibernate.c3p0.max_statements" value="0" />
-        <property name="hibernate.c3p0.timeout" value="100" />
+ 
+			<property name="hibernate.c3p0.max_size" value="100" />
+			<property name="hibernate.c3p0.min_size" value="0" />
+			<property name="hibernate.c3p0.acquire_increment" value="1" /> 
+			<property name="hibernate.c3p0.idle_test_period" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="0" />
+			<property name="hibernate.c3p0.timeout" value="100" />
+			<property name="hibernate.cache.use_second_level_cache" value="false" />
+			<property name="hibernate.cache.use_query_cache" value="false" />
+			<property name="hibernate.c3p0.max_statements" value="0" />
 		</properties>
 	</persistence-unit>
 </persistence>
