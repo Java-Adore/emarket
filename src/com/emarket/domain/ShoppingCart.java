@@ -28,7 +28,8 @@ public class ShoppingCart implements Serializable{
 	private Date date;
 	private User user;
 	
-	private Map<Product, Integer> orders = new HashMap<Product, Integer>();;
+	
+	private Map<Product, Integer> orders = new HashMap<Product, Integer>();
 
 	@Enumerated
 	private OrderStatus status;

@@ -10,19 +10,20 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy =InheritanceType.JOINED)
 public abstract class Product implements Comparable<Product> {
-	private static long currentId =1;
+	//private static long currentId =1;
 	@Id @GeneratedValue
 	private Long id;
 	private String name;
 	private String description;
 	private Double price; // in euro, internationalization can come later
+	private Integer amount;
 	
 	@Column(name="product_Type")
 	protected String productType;
 	public Product(){}
 	public Product(String name, String description, double price) {
 		super();
-		this.id = currentId++; // Simple way of getting an unique id. To be deferred to the DBMS later.
+		//this.id = currentId++; // Simple way of getting an unique id. To be deferred to the DBMS later.
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -87,6 +88,18 @@ public abstract class Product implements Comparable<Product> {
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
+	}
+	
+	
+	
+	public Integer getAmount() {
+		return amount;
+	}
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	@Override
 	public boolean equals(Object obj) {

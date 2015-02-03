@@ -7,6 +7,11 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<!-- <provider>org.apache.openjpa.persistence.PersistenceProvider</provider> -->
 		<class>com.emarket.entity.Member</class>
+		<class>com.emarket.domain.Product</class>
+		<class>com.emarket.domain.Order</class>
+		<class>com.emarket.domain.OrderItem</class>
+		<class>com.emarket.domain.ShoppingCart</class>
+		<class>com.emarket.domain.User</class>
 		
 
 		<properties>

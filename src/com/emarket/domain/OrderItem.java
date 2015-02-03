@@ -2,11 +2,15 @@ package com.emarket.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 // Special class for output in theShoppingCartBean; do not store in database
 // In the database, ShoppingCarts with status COMPLETED are stored.
+@Entity
 public class OrderItem implements Comparable<OrderItem> , Serializable{
 	
 	
@@ -22,6 +26,11 @@ public class OrderItem implements Comparable<OrderItem> , Serializable{
 	private Double price;
 	
 	private Integer amount;
+	@ManyToOne
+	private Product product;
+	
+	@ManyToOne 
+	private Order order;
 	
 	public OrderItem() {
 		
@@ -72,4 +81,23 @@ public class OrderItem implements Comparable<OrderItem> , Serializable{
 	public int compareTo(OrderItem other) {
 		return this.name.compareTo(other.name);
 	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	
+	
 }

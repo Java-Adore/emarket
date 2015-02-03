@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	
 	@Column(name="role" )
-	private Integer role;
+	private Integer role=0;
 	
 	public User(){}
 	
