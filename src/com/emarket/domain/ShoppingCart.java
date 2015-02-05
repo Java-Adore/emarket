@@ -9,12 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class ShoppingCart implements Serializable{
@@ -28,7 +33,10 @@ public class ShoppingCart implements Serializable{
 	private Date date;
 	private User user;
 	
-	
+	@ElementCollection
+    @MapKeyColumn(name="name")
+    @Column(name="value")
+    @CollectionTable(name="example_attributes", joinColumns=@JoinColumn(name="example_id"))
 	private Map<Product, Integer> orders = new HashMap<Product, Integer>();
 
 	@Enumerated
