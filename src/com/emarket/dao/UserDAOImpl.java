@@ -9,7 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import com.emarket.domain.User;
-import com.emarket.general.Constants;
 import com.emarket.utils.Util;
 
 @Singleton

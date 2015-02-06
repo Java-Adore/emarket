@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Local;
 
 import com.emarket.domain.User;
-import com.emarket.entity.Member;
 
 @Local
 public interface UserDAO extends Serializable{

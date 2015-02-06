@@ -2,13 +2,20 @@ package com.emarket.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Miscellaneous extends Product {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date expireDate;
 	private String areaOfApplication;
 	
+	public Miscellaneous(){}
 	public Miscellaneous(String name, String description, Date expiryDate, String areaOfApplication, double price) {
 		super(name, description, price);
-		this.expireDate = expireDate;
 		this.areaOfApplication = areaOfApplication;
 	}
 

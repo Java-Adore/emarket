@@ -1,4 +1,5 @@
 @charset "windows-1251";
+
 a{text-decoration:none;}
 a:hover{text-decoration:underline;}
 
@@ -33,7 +34,7 @@ form{margin: 0px}
 .item_price{font-family: Tahoma; font-size: 14px; color: #3091BB; font-weight: 600; padding: 0 7px 15px 7px}
 
 
-
+/* 
 
 .ui-widget-content {
 	background: transparent !important;
@@ -69,7 +70,7 @@ form{margin: 0px}
 	position: relative;
 	border-color: #4d90fe;
 	margin-left: -1px;
-	padding-left: 14px; /* Regular padding-left + 1. */
+	padding-left: 14px; Regular padding-left + 1.
 	width: 401px;
 	z-index: 100;
 }
@@ -123,7 +124,7 @@ form{margin: 0px}
 }
 
 .customTextBox:FOCUS {
-	/* border :2px solid red !important; */
+	border :2px solid red !important;
 	
 }
 
@@ -190,10 +191,10 @@ td ui-outputlabel {
 	left: 0px;
 	top: 0px;
 	z-index: -9999;
-	/* Ensure div tag stays behind content; -999 might work, too. */
+	Ensure div tag stays behind content; -999 might work, too.
 }
 
 
 .ui-datepicker-header{background-color:rgba(0,0,0,.8)!important;}
 
-.ui-datepicker table{background-color:rgba(0,0,0,.8)!important;} 
+.ui-datepicker table{background-color:rgba(0,0,0,.8)!important;}  */

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+
+	<ui:composition template="/WEB-INF/template/adminTemplate.xhtml">
+
+		<ui:define name="leftMenu"></ui:define>
+		<ui:define name="topMenu"></ui:define>
+		<ui:define name="content">
+
+
+			<h:form id="tabsForm">
+				<p:tabView>
+					<p:tab title="Honey">
+						<p:commandButton value="Effects" type="button"
+							onclick="PF('honeyDialog').show();" />
+
+
+						<p:dataTable id="honeyDataTable"
+							value="#{manageProductsBean.honeyList}" var="product">
+
+							<p:column headerText="#{loc.PRODUCTNAME}">
+								<p:outputLabel value="#{product.name}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCTPRICE}">
+								<p:outputLabel value="#{product.price} EURO" />
+							</p:column>
+							<p:column headerText="#{loc.AMOUNT}">
+								<p:outputLabel value="#{product.amount}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCT_DESCRIPTION}">
+								<p:inputTextarea readonly="true" rows="5" cols="30"
+									value="#{product.description}" maxlength="50"
+									autoResize="false" />
+							</p:column>
+						</p:dataTable>
+
+					</p:tab>
+
+					<p:tab title="Wax">
+
+						<p:commandButton value="Effects" type="button"
+							onclick="PF('waxDialog').show();" />
+
+						<p:dataTable value="#{manageProductsBean.waxList}" var="product">
+
+							<p:column headerText="#{loc.PRODUCTNAME}">
+								<p:outputLabel value="#{product.name}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCTPRICE}">
+								<p:outputLabel value="#{product.price} EURO" />
+							</p:column>
+							<p:column headerText="#{loc.AMOUNT}">
+								<p:outputLabel value="#{product.amount}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCT_DESCRIPTION}">
+								<p:inputTextarea readonly="true" rows="5" cols="30"
+									value="#{product.description}" maxlength="50"
+									autoResize="false" />
+							</p:column>
+						</p:dataTable>
+
+					</p:tab>
+
+					<p:tab title="Miscellaneous">
+						<p:commandButton value="Effects" type="button"
+							onclick="PF('miscellaneousDialog').show();" />
+
+
+						<p:dataTable value="#{manageProductsBean.miscellaneousList}"
+							var="product">
+
+							<p:column headerText="#{loc.PRODUCTNAME}">
+								<p:outputLabel value="#{product.name}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCTPRICE}">
+								<p:outputLabel value="#{product.price} EURO" />
+							</p:column>
+							<p:column headerText="#{loc.AMOUNT}">
+								<p:outputLabel value="#{product.amount}" />
+							</p:column>
+
+
+							<p:column headerText="#{loc.PRODUCT_DESCRIPTION}">
+								<p:inputTextarea readonly="true" rows="5" cols="30"
+									value="#{product.description}" maxlength="50"
+									autoResize="false" />
+							</p:column>
+						</p:dataTable>
+
+					</p:tab>
+
+
+					<p:tab title="Flower">
+						<p:commandButton value="Effects" type="button"
+							onclick="PF('flowerDialog').show();" />
+
+
+						<p:dataTable value="#{manageProductsBean.flowersList}"
+							var="product">
+
+							<p:column headerText="#{loc.PRODUCTNAME}">
+								<p:outputLabel value="#{product.name}" />
+							</p:column>
+
+
+
+
+
+							<p:column headerText="#{loc.PRODUCT_DESCRIPTION}">
+								<p:inputTextarea readonly="true" rows="5" cols="30"
+									value="#{product.description}" maxlength="50"
+									autoResize="false" />
+							</p:column>
+						</p:dataTable>
+
+					</p:tab>
+
+
+				</p:tabView>
+			</h:form>
+
+
+			<p:dialog header="#{loc.ADD_NEW_HONEY_PRODUCT}"
+				widgetVar="honeyDialog" modal="true" width="400" height="200">
+				<h:form>
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="#{loc.NAME}" />
+
+						<p:inputText value="#{manageProductsBean.activeHoney.name}"
+							requiredMessage="#{loc.NAME_IS_REQUIRED}" required="true" />
+
+						<p:outputLabel value="#{loc.PRICE}" />
+						<p:spinner id="price"
+							value="#{manageProductsBean.activeHoney.price}" min="1"
+							max="1000" required="true"
+							requiredMessage="#{loc.PRICE_IS_REQUIRED}" />
+						<p:outputLabel value="#{loc.AMOUT}" />
+
+
+
+						<p:spinner id="amount" min="1" max="1000" required="true"
+							value="#{manageProductsBean.activeHoney.amount}"
+							requiredMessage="#{loc.AMOUT_IS_REQUIRED}" />
+
+
+						<p:outputLabel value="#{loc.SOURCE_FLOWER}" />
+						<p:selectOneMenu value="#{manageProductsBean.flowerType}"
+							requiredMessage="#{loc.SOURCE_FLOWER_IS_REQUIRED}"
+							converter="#{genericMarkedEntityConverter}"
+							converterMessage="#{loc.ERROR_RELARED_TO_FLOWER_TYPE}"
+							effect="drop" style="min-width: 200px" required="true">
+							<f:selectItems value="#{manageProductsBean.flowersList}"
+								var="flower" itemLabel="#{flower.name}" itemValue="#{flower}" />
+						</p:selectOneMenu>
+
+
+
+					</p:panelGrid>
+					<p:commandButton value="#{loc.ADD_NEW}"
+						actionListener="#{manageProductsBean.addNewHoneyProduct()}"
+						update=":growl :tabsForm">
+					</p:commandButton>
+
+				</h:form>
+
+
+
+			</p:dialog>
+
+
+
+
+			<p:dialog header="#{loc.ADD_NEW_WAX_PRODUCT}" widgetVar="waxDialog"
+				modal="true" width="400" height="200">
+
+				<h:form>
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="#{loc.NAME}" />
+
+						<p:inputText value="#{manageProductsBean.activeWax.name}"
+							requiredMessage="#{loc.NAME_IS_REQUIRED}" required="true" />
+
+						<p:outputLabel value="#{loc.PRICE}" />
+						<p:spinner id="price"
+							value="#{manageProductsBean.activeWax.price}" min="1" max="1000"
+							required="true" requiredMessage="#{loc.PRICE_IS_REQUIRED}" />
+						<p:outputLabel value="#{loc.AMOUT}" />
+
+
+
+						<p:spinner id="amount" min="1" max="1000" required="true"
+							value="#{manageProductsBean.activeWax.amount}"
+							requiredMessage="#{loc.AMOUT_IS_REQUIRED}" />
+
+
+
+
+
+
+					</p:panelGrid>
+					<p:commandButton value="#{loc.ADD_NEW}"
+						actionListener="#{manageProductsBean.addNewWaxProduct()}"
+						update=":growl :tabsForm">
+					</p:commandButton>
+
+				</h:form>
+
+			</p:dialog>
+
+
+
+
+			<p:dialog header="#{loc.ADD_NEW_MISI_PRODUCT}"
+				widgetVar="miscellaneousDialog" width="400" modal="true"
+				height="200">
+
+				<h:form>
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="#{loc.NAME}" />
+
+						<p:inputText
+							value="#{manageProductsBean.activeMiscellaneous.name}"
+							requiredMessage="#{loc.NAME_IS_REQUIRED}" required="true" />
+
+						<p:outputLabel value="#{loc.PRICE}" />
+						<p:spinner id="price"
+							value="#{manageProductsBean.activeMiscellaneous.price}" min="1"
+							max="1000" required="true"
+							requiredMessage="#{loc.PRICE_IS_REQUIRED}" />
+						<p:outputLabel value="#{loc.AMOUT}" />
+
+
+
+						<p:spinner id="amount" min="1" max="1000" required="true"
+							value="#{manageProductsBean.activeMiscellaneous.amount}"
+							requiredMessage="#{loc.AMOUT_IS_REQUIRED}" />
+
+
+
+
+
+
+					</p:panelGrid>
+					<p:commandButton value="#{loc.ADD_NEW}"
+						actionListener="#{manageProductsBean.addNewMiscellaneousProduct}"
+						update=":growl :tabsForm">
+					</p:commandButton>
+
+				</h:form>
+			</p:dialog>
+
+
+			<p:dialog header="#{loc.ADD_NEW_FLOWER}"
+				widgetVar="flowerDialog" width="400" modal="true"
+				height="200">
+
+				<h:form>
+					<p:panelGrid columns="2">
+
+						<p:outputLabel value="#{loc.NAME}" />
+
+						<p:inputText value="#{manageProductsBean.activeflower.name}"
+							requiredMessage="#{loc.NAME_IS_REQUIRED}" required="true" />
+
+						<p:outputLabel value="#{loc.DESCRIPTION}" />
+
+						<p:inputTextarea rows="5" cols="30" value="#{manageProductsBean.activeflower.description}"
+							maxlength="50" autoResize="false" />
+
+					</p:panelGrid>
+					<p:commandButton value="#{loc.ADD_NEW}"
+						actionListener="#{manageProductsBean.addNewFlower()}"
+						update=":growl :tabsForm">
+					</p:commandButton>
+
+				</h:form>
+			</p:dialog>
+
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

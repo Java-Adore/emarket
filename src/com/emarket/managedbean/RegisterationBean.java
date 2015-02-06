@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import com.emarket.business.facade.MemberFacade;
+import com.emarket.business.facade.EmarketFacade;
 import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.general.EMarketException;
@@ -17,7 +17,7 @@ public class RegisterationBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@EJB
-	MemberFacade memberFacade;
+	EmarketFacade memberFacade;
 	private String firstName;
 	private String lastName;
 	private String userName;

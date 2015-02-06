@@ -6,59 +6,70 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Inheritance(strategy =InheritanceType.JOINED)
-public abstract class Product implements Comparable<Product> {
-	//private static long currentId =1;
-	@Id @GeneratedValue
-	private Long id;
+import com.emarket.general.Marker;
+ 
+@MappedSuperclass 
+public abstract class Product implements Comparable<Product>, Marker {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
+	private Long ID;
 	private String name;
 	private String description;
-	private Double price; // in euro, internationalization can come later
-	private Integer amount;
-	
-	@Column(name="product_Type")
+	@Column(nullable=false)
+	private double price; 
+	@Column(nullable = false)
+	private int amount;
+
+	@Column(name = "product_Type")
 	protected String productType;
-	public Product(){}
+	
+	
+
+	public Product() {
+	}
+
 	public Product(String name, String description, double price) {
 		super();
-		//this.id = currentId++; // Simple way of getting an unique id. To be deferred to the DBMS later.
+		// this.id = currentId++; // Simple way of getting an unique id. To be
+		// deferred to the DBMS later.
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		if (this instanceof Honey) {
 			productType = "Honey";
-		}
-		else if (this instanceof Wax) {
+		} else if (this instanceof Wax) {
 			productType = "Wax";
-		}
-		else if (this instanceof Miscellaneous) {
+		} else if (this instanceof Miscellaneous) {
 			productType = "Miscellaneous";
-		}
-		else {
+		} else {
 			productType = "Unknown";
 		}
 	}
-	
+
 	public abstract String toString();
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Long getId() {
-		return id;
-	}
-	
+
 	public String getProductType() {
 		return productType;
 	}
@@ -67,17 +78,14 @@ public abstract class Product implements Comparable<Product> {
 		this.productType = productType;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public String getType() {
 		return productType;
 	}
@@ -89,18 +97,19 @@ public abstract class Product implements Comparable<Product> {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-	
-	
-	
+
 	public Integer getAmount() {
 		return amount;
 	}
+
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -117,14 +126,22 @@ public abstract class Product implements Comparable<Product> {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public final int compareTo(Product other) {
 		if (this.getClass().toString().compareTo(other.getClass().toString()) == 0) {
 			return this.name.compareTo(other.name);
+		} else {
+			return this.getClass().toString()
+					.compareTo(other.getClass().toString());
 		}
-		else {
-			return this.getClass().toString().compareTo(other.getClass().toString());
-		}
+	}
+
+	public Long getID() {
+		return ID;
+	}
+
+	public void setID(Long iD) {
+		ID = iD;
 	}
 }

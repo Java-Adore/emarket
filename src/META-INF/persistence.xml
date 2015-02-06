@@ -6,7 +6,15 @@
 	<persistence-unit name="primary">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.emarket.domain.User</class>
- 
+		<class>com.emarket.domain.Product</class>
+		<class>com.emarket.domain.Flower</class>
+		<class>com.emarket.domain.Honey</class>
+		<class>com.emarket.domain.Wax</class>
+		<class>com.emarket.domain.Miscellaneous</class> 
+
+
+
+
 		<properties>
 			<!-- Properties for Hibernate -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

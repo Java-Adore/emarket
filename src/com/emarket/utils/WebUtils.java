@@ -311,4 +311,14 @@ public class WebUtils {
 		}.start();
 		
 	}
+
+	public static void fireSuccessMessage() {
+		fireInfoMessage("ADDED_SUCCESSFULLY");
+		
+	}
+
+	public static void fireFaildMessage() {
+		fireErrorMessage("ADDING_FAILD");
+		
+	}
 }
