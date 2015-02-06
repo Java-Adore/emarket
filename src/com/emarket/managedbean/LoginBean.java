@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import com.emarket.utils.Util;
 import com.emarket.utils.WebUtils;
 import com.emarket.business.facade.MemberFacade;
+import com.emarket.domain.User;
 import com.emarket.entity.Member;
 import com.emarket.general.Constants;
 import com.emarket.general.EMarketException;
@@ -30,7 +31,7 @@ public class LoginBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String email;
+	private String userName;
 	private String password;
 	
 	@PostConstruct
@@ -38,12 +39,7 @@ public class LoginBean implements Serializable{
 		
 	}
 	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -54,7 +50,7 @@ public class LoginBean implements Serializable{
 	public void login(){
 		try {
 			System.out.println("===========================\n\n\n========================");
-			Member member = 	memberFacade.login(email , password);
+			User member = 	memberFacade.login(userName , password);
 			WebUtils.fireInfoMessage( WebUtils.perpareWelcomeMessage(member.getFirstName()) );
 			
 			WebUtils.injectIntoSession( Constants.CURRENT_LOGGED_USER , member );
@@ -65,5 +61,15 @@ public class LoginBean implements Serializable{
 			WebUtils.fireErrorMessage(e.getMessageKey());
 		}
 		
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

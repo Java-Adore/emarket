@@ -8,44 +8,44 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import com.emarket.entity.Member;
+import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.utils.Util;
 
 @Singleton
-public class MemberDAOImpl extends AbstractDAO<Member> implements MemberDAO {
+public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
 	EntityManager entityManager = getEntityManagerFactory()
 			.createEntityManager();
 
-	public MemberDAOImpl() {
+	public UserDAOImpl() {
 		super.setEntityManager(entityManager);
 	}
 
-	public Member addMember(Member Member) {
+	public User addUser(User User) {
 
-		return super.persist(Member);
+		return super.persist(User);
 	}
 
-	public List<Member> getAllMembers() {
+	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
-		return super.findAll(Member.class);
+		return super.findAll(User.class);
 	}
 
-	public Member getMemberByID(Long ID) {
-		return super.getEntityByID(Member.class, ID);
-	}
+	public User getUserByID(Long ID) {
+		return super.getEntityByID(User.class, ID);
+	} 
 
-	public Member getMemeberByEmail(String email) {
+	public User getUserByUserName(String userName) {
 		EntityTransaction transaction = getEntityManager().getTransaction();
-		List<Member> result = new ArrayList();
+		List<User> result = new ArrayList();
 		try {
 			if (transaction.isActive() == false) {
 				transaction.begin();
 			}
 			Query query = getEntityManager().createQuery(
-					"from Member where lower(email) like :email");
-			query.setParameter("email", email.toLowerCase());
+					"from User where lower(userName) like :userName");
+			query.setParameter("userName", userName.toLowerCase());
 			result = query.getResultList();
 			Util.isNotEmpty(result);
 			return Util.isNotEmpty(result) ? result.get(0) : null;

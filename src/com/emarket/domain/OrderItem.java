@@ -21,6 +21,7 @@ public class OrderItem implements Comparable<OrderItem> , Serializable{
 	
 	@Id @GeneratedValue
 	private Long id;
+	
 	private String name;
 	
 	private Double price;
@@ -36,13 +37,6 @@ public class OrderItem implements Comparable<OrderItem> , Serializable{
 		
 	}
 
-	public OrderItem(Long id, String name, double price, int amount) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.amount = amount;
-	}
 
 	
 	public Long getId() {

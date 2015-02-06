@@ -1,10 +1,9 @@
 package com.emarket.business.facade;
-
+import com.emarket.domain.*;
 import java.util.List;
 
 import javax.ejb.Local;
 
-import com.emarket.entity.Member;
 import com.emarket.general.EMarketException;
 
 
@@ -12,13 +11,13 @@ import com.emarket.general.EMarketException;
 public interface MemberFacade  {
 	
 
-	List<Member> getAllMembers();
+	List<User> getAllUsers();
 
-	Member getMemberByID(Long l);
+	User getUserByID(Long l);
 	
-	Member login(String email , String password)throws EMarketException ;
+	User login(String userName , String password)throws EMarketException ;
 	
-	Member register(String firstName, String lastName, String email, String password, String confirmPassword, String pictureURL) throws EMarketException ;
+	User register(String firstName, String lastName, String userName, String password, String confirmPassword, String pictureURL) throws EMarketException ;
 	
 
 	

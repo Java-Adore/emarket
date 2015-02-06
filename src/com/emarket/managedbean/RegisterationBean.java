@@ -1,23 +1,15 @@
 package com.emarket.managedbean;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.primefaces.model.UploadedFile;
-
 import com.emarket.business.facade.MemberFacade;
-import com.emarket.entity.Member;
+import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.general.EMarketException;
-import com.emarket.utils.Util;
 import com.emarket.utils.WebUtils;
 @ManagedBean
 @ViewScoped
@@ -28,12 +20,9 @@ public class RegisterationBean implements Serializable {
 	MemberFacade memberFacade;
 	private String firstName;
 	private String lastName;
-	private String email;
+	private String userName;
 	private String password;
 	private String confirmPass;
-	private UploadedFile userImage;
-	
-	private String imageExtension;
 	
 	public String getFirstName() {
 		return firstName;
@@ -49,14 +38,6 @@ public class RegisterationBean implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -75,23 +56,16 @@ public class RegisterationBean implements Serializable {
 		this.confirmPass = confirmPass;
 	}
 
-	public UploadedFile getUserImage() {
-		return userImage;
-	}
 
-	public void setUserImage(UploadedFile userImage) {
-		this.userImage = userImage;
-	}
 
 	public void register() {
 
 		try {
 			validatePasswords();
-			String pictureURL = saveFileIfExist();
-			Member member = memberFacade.register(firstName, lastName, email, password,
-					confirmPass, pictureURL);
+			User user = memberFacade.register(firstName, lastName, userName, password,
+					confirmPass, null);
 			WebUtils.fireInfoMessage(Constants.USER_ADDED_SUCCESSFULLY);
-			WebUtils.injectIntoSession(Constants.CURRENT_LOGGED_USER, member);
+			WebUtils.injectIntoSession(Constants.CURRENT_LOGGED_USER, user);
 			WebUtils.redirectTo(Constants.HOME_PAGE);
 
 		} catch (EMarketException e) {
@@ -101,51 +75,7 @@ public class RegisterationBean implements Serializable {
 
 	}
 
-	private String saveFileIfExist() throws EMarketException {
-
-		if (userImage != null && Util.isNotEmpty(userImage.getFileName())) {
-			String pathToSaveImage = WebUtils.getWarPath();
-			File imagesDirectorydirectory = new File(pathToSaveImage + File.separator
-					+ Constants.STORE_FOLDER_NAME );
-			if( !imagesDirectorydirectory.exists())
-			{
-				imagesDirectorydirectory.mkdirs();
-			}
-			imageExtension = Util
-					.extractExtenstionFromFileName(userImage
-							.getFileName());
-			File file = new File(imagesDirectorydirectory.getPath()+"/" + email+imageExtension);
-			
-			try {
-				file.createNewFile();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			
-
-				try (InputStream is = userImage.getInputstream();
-						OutputStream os = new FileOutputStream(file)) {
-
-					int i = -1;
-					byte bytes[] = new byte[1024];
-					while ((i = is.read(bytes)) != -1) {
-						os.write(bytes);
-						os.flush();
-					}
-
-					;
-					return email + imageExtension;
-
-				} catch (IOException e) {
-
-					throw Constants.UNABLE_TO_UPLOAD_IMAGE;
-				}
-			
-
-		}
-		return null;
-	}
+	
 
 	private void validatePasswords() throws EMarketException {
 
@@ -154,6 +84,14 @@ public class RegisterationBean implements Serializable {
 					Constants.REGISTRATION_PASSWORD_AND_CONFIRMATION_SHOULD_BE_MATCHED);
 		}
 
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 }

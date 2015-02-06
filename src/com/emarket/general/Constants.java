@@ -14,7 +14,7 @@ public class Constants implements Serializable {
 	public static final String MEMBER_INVALID_PASSOWRD = "MEMBER_INVALID_PASSOWRD";
 	public static final String EMAIL_ALREADY_EXIST = "EMAIL_ALREADY_EXIST";
 	public static final String DATABASE_ERROR_MESSAGE = "DATABASE_ERROR";
-	public static final String HOME_PAGE = "home.xhtml"; 
+	public static final String HOME_PAGE = "index.xhtml"; 
 	public static final String USER_ADDED_SUCCESSFULLY = "USER_ADDED_SUCCESSFULLY";
 	public static final String ADD_EVENT_EVENT_ADDED_SUCCESSFULLY = "ADD_EVENT_EVENT_ADDED_SUCCESSFULLY";
 

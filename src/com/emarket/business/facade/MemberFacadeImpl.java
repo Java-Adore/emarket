@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.emarket.business.service.MemberService;
-import com.emarket.entity.Member;
+import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.general.EMarketException;
 import com.emarket.utils.Util;
@@ -17,25 +17,21 @@ public class MemberFacadeImpl implements MemberFacade {
 	@EJB
 	private MemberService memberService;
 
-
-	
-
 	@Override
-	public List<Member> getAllMembers() {
+	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Member getMemberByID(Long l) {
+	public User getUserByID(Long l) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public User login(String userName, String password) throws EMarketException {
 
-	public Member login(String email, String password) throws EMarketException {
-
-		Member member = memberService.getMemeberByEmail(email);
+		User member = memberService.getUserByUserName(userName);
 		if (member == null) {
 			throw Constants.invalidEmail;
 		} else {
@@ -49,21 +45,19 @@ public class MemberFacadeImpl implements MemberFacade {
 		}
 	}
 
-
 	@Override
-	public Member register(String firstName, String lastName, String email,
+	public User register(String firstName, String lastName, String userName,
 			String password, String confirmPassword, String userPicPath)
 			throws EMarketException {
-	
-		
-		Member member = new Member();
-		member.setEmail(email);
-		member.setFirstName(firstName);
-		member.setLastName(lastName);
-		member.setUserPicPath(userPicPath);
-		member.setPassword(com.emarket.utils.Util.encrypt(password));
-		member = memberService.addMember(member);
-		return member;
+
+		User user = new User();
+		user.setUserName(userName);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setPassword(com.emarket.utils.Util.encrypt(password));
+		user.setRole(0);
+		user = memberService.addUser(user);
+		return user;
 
 	}
 }

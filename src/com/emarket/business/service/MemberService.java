@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import com.emarket.domain.User;
 import com.emarket.entity.Member;
 import com.emarket.general.EMarketException;
 
@@ -15,13 +16,13 @@ public interface MemberService extends Serializable{
 	 * 
 	 */
 	
-	Member addMember(Member Member) throws EMarketException;
+	User addUser(User user) throws EMarketException;
 
-	List<Member> getAllMembers();
+	List<User> getAllUsers();
 
-	Member getMemberByID(Long l);
+	User getUserByID(Long l);
 	
-	public Member getMemeberByEmail(String email);
+	public User getUserByUserName(String username);
 	
 
 

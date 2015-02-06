@@ -1,51 +1,52 @@
 package com.emarket.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
-public class User {
+import com.emarket.general.Marker;
 
-	@Id @GeneratedValue
-	private Long id;
+@Entity
+public class User implements Serializable , Marker{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
+	private Long ID;
 	private String firstName;
 	private String lastName;
-	private String username;
+	private String userName;
 	private String password;
-	
-	@Column(name="role" )
-	private Integer role=0;
-	
-	public User(){}
-	
-	public User(String firstName, String lastName, String username) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
+
+	@Column(name = "role")
+	private Integer role = 0;
+
+	public User() {
 	}
 
-	public User(String firstName, String lastName, String username, String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Integer getRole() {
+		return role;
+	}
+
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 
 	
-	
-	
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -63,14 +64,6 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -79,17 +72,13 @@ public class User {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Person " + firstName + " " + lastName + " has username " + username;
+	public Long getID() {
+		return ID;
 	}
-	
-	public boolean authorize(String username, String password) {
-		if ((this.username.equals(username) && (this.password.equals(password)))) {
-			return true;
-		}
-		else {
-			return false;
-		}
+
+	public void setID(Long iD) {
+		ID = iD;
 	}
+
+
 }
