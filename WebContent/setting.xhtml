@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template/master.xhtml">
+
+	<ui:define name="title">
+		<title>#{loc.SETTING_PAGE_TITLE}</title>
+	</ui:define>
+	
+	<ui:define name="content">
+		<br />
+		<td valign="top" style="width: 400px !important">
+			<table border="0" cellpadding="0">
+				<h:form>
+					<center>
+						<p:panelGrid id="idPanellogin" style="border:none;">
+							<p:row>
+								<p:column>
+									<p:outputLabel value="#{loc.regNameLbl}" />
+								</p:column>
+								<p:column>
+									<p:inputText id="name" value="#{registerationBean.firstName}"
+										required="true"
+										requiredMessage="#{loc.GENERAL_FIRST_NAME_IS_REQUIRED}" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column>
+									<p:outputLabel value="#{loc.regFamilyLbl}" />
+								</p:column>
+								<p:column>
+									<p:inputText id="family" value="#{registerationBean.lastName}"
+										required="true"
+										requiredMessage="#{loc.GENERAL_LAST_NAME_IS_REQUIRED}" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column>
+									<p:outputLabel value="#{loc.regEmailLbl}" />
+								</p:column>
+								<p:column>
+									<p:inputText id="email" value="#{registerationBean.userName}"
+										required="true"
+										requiredMessage="#{loc.GENERAL_EMAIL_IS_REQUIRED}" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column>
+									<p:outputLabel value="#{loc.regPassLbl}" />
+								</p:column>
+								<p:column>
+									<p:password id="pass" value="#{registerationBean.password}"
+										requiredMessage="#{loc.GENERAL_PASSWORD_IS_REQUIRED}"
+										required="true" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column>
+									<p:outputLabel value="#{loc.regConfirmPassLbl}" />
+								</p:column>
+								<p:column>
+									<p:password id="confirmPass"
+										value="#{registerationBean.confirmPass}" required="true"
+										requiredMessage="#{loc.GENERAL_CONFIRM_PASSWORD_IS_REQUIRED}" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column colspan="2" style="text-align:right;">
+									<center>
+										<p:commandButton id="submit" value="#{loc.regButt}"
+											ajax="false" update=":growlForm"
+											actionListener="#{registerationBean.register()}" />
+									</center>
+								</p:column>
+							</p:row>
+						</p:panelGrid>
+					</center>
+
+				</h:form>
+			</table>
+		</td>
+	</ui:define>
+</ui:composition>

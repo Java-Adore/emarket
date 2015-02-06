@@ -1,34 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-<h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/master4Admin.xhtml">
 
-	<ui:composition template="/WEB-INF/template/mainTemplate.xhtml">
+	<ui:define name="title">
+		<title>#{loc.LOGIN_PAGE_TITLE}</title>
+	</ui:define>
 
-		<ui:define name="content">
-			
-				<td valign="top" style="width: 400px !important">
-					<table border="0" cellpadding="0">
-						<tr>
-							<td><h:form><p:outputLabel value="#{loc.usernameLbl}" /> <p:inputText
-									id="email" value="#{loginBean.userName}" required="true"  /> <p:outputLabel
-									value="#{loc.passwordLbl}" /> <p:password id="pass"
-									value="#{loginBean.password}" required="true" />
-									<p:commandButton id="submit" value="#{loc.login}"
-										actionListener="#{loginBean.login()}" update=":growl" /></h:form></td>
-						</tr>
-					</table>
+	<ui:define name="content">
+		<br />
+		<h:form>
+			<p:panelGrid columns="2" styleClass="panelGrid">
+				<p:outputLabel value="#{loc.usernameLbl}" />
+				<p:inputText id="email" value="#{loginBean.userName}"
+					style="width:250px;" required="true" />
+					
+				<p:outputLabel value="#{loc.passwordLbl}" />
+				<p:password id="pass" value="#{loginBean.password}"
+					style="width:250px;" required="true" />
+				
+				<p:commandButton id="submit" value="#{loc.LOGIN}"
+					actionListener="#{loginBean.login()}" update=":growl" />
+			</p:panelGrid>
+		</h:form>
 
-				</td>
-			
-		</ui:define>
-
-	</ui:composition>
-
-</h:body>
-
-</html>
+	</ui:define>
+</ui:composition>

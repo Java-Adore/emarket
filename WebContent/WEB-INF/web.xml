@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-	<display-name>e-market</display-name>
+	<display-name>emarket</display-name>
 
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
@@ -42,8 +42,9 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
-	
-
-	
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>ui-lightness </param-value>
+	</context-param>
 
 </web-app>

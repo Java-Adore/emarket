@@ -1,200 +1,85 @@
-@charset "windows-1251";
-
-a{text-decoration:none;}
-a:hover{text-decoration:underline;}
-
-
-body{margin: 0px; padding: 0px;}
-div,td{font-family: Tahoma; font-size: 9px; color: #808080;}
-form{margin: 0px}
-.sel1{height: 19px; width: 109px; font-family: Tahoma; font-size: 10px; color: #46484A;}
-.topmenu{font-family: Tahoma; font-size: 10px; color: #46484A; font-weight: 600}
-.top11{font-family: Tahoma; font-size: 11px; color: #46484A;}
-.or11{font-family: Tahoma; font-size: 11px; color: #FF7E00;}
-
-
-.mb{color: #000000; font-size: 11px; position: absolute; font-family: tahoma; font-weight: 600}
-.mw{position: relative; left: -1; top: -1; color: #ffffff; font-size: 11px; font-family: tahoma; font-weight: 600}
-.aw{color: #ffffff; font-size: 11px; font-family: tahoma; font-weight: 600}
-
-.lb{color: #78BE30; font-size: 11px; position: absolute; font-family: tahoma; font-weight: 600}
-.lw{position: relative; left: -1; top: -1; color: #ffffff; font-size: 11px; font-family: tahoma; font-weight: 600}
-.law{color: #ffffff; font-size: 11px; font-family: tahoma; font-weight: 600}
-
-.lmenu{padding: 7px 0 4px 0}
-.lm11{font-family: Tahoma; font-size: 11px; color: #484E53;}
-
-.search{height: 20px; width: 117px; font-family: Tahoma; font-size: 11px; color: #46484A; border: #000000 1px solid; padding: 2px 3px 2px 3px}
-
-.so{font-family: Tahoma; font-size: 11px; color: #828B93;}
-
-
-.item_name{font-family: Tahoma; font-size: 14px; color: #E55C19; font-weight: 600; padding: 0 7px 0px 7px}
-.item_desc{font-family: Tahoma; font-size: 11px; color: #484E53; font-weight: 600; padding: 7px}
-.item_price{font-family: Tahoma; font-size: 14px; color: #3091BB; font-weight: 600; padding: 0 7px 15px 7px}
-
-
-/* 
-
-.ui-widget-content {
-	background: transparent !important;
-}
-
-.ui-widget-header {
-	background: transparent !important;
-}
-
-.ui-tabs .ui-tabs-nav {
-	text-align: center;
-}
-
-.ui-tabs .ui-tabs-nav li {
-	float: right !important;
-}
-
-
-
-.location {
-	position: relative;
-	background-color: #fff;
-	padding: 0 11px 0 13px;
-	width: 400px;
-	font-family: Roboto;
-	font-size: 15px;
-	font-weight: 300;
-	text-overflow: ellipsis;
-	z-index: 100;
-}
-
-#location:focus {
-	position: relative;
-	border-color: #4d90fe;
-	margin-left: -1px;
-	padding-left: 14px; Regular padding-left + 1.
-	width: 401px;
-	z-index: 100;
-}
-
-.myClass {
-	border: none !important;
-	position: absolute !important;
-	top: 130px !important;
-	margin-left: auto !important;
-	margin-right: auto !important;
-	width: 100% !important;
-}
-
-.myClass .ui-dock-container-bottom {
-	position: relative !important;
-}
-
-.ui-fieldset {
-	background-color: rgba(0, 0, 0, .3) !important;
-	max-width: 70% !important;
-	min-width: 1000px !important;
-	margin-top: 30px !important;
-}
-
-
-
-.ui-dialog,ui-dialog-content {
-	background: rgba(0, 0, 0, .5) !important;
-	color: white !important;
-}
-
-.ui-widget-content {
-	color: white !important;
-}
-
-.ui-widget {
-	font-size: 1em !important;
-}
-
-
-.ui-selectonemenu-items-wrapper {
-	background-color: rgba(0, 0, 0, .8) !important;
-}
-
-.customTextBox {
-	background: transparent !important;
-	color: white !important;
-	text-align: center !important;
-	padding: 1px !important;
-	box-shadow: none !important;
-}
-
-.customTextBox:FOCUS {
-	border :2px solid red !important;
+body{
 	
 }
-
-.ui-panel {
-	border: 0px solid white !important;
-}
-
-td ui-outputlabel {
-	color: white!importnant;
-}
-
-.ui-dialog-title {
-	color: white !important;
-}
-
-.ui-fieldset-legend {
-	color: white !important;
-}
-
-.noBorder {
-	border: none !important;
-}
-
-.ui-widget-content {
-	border: none !important;
-}
-
-.ui-fieldset,.ui-fieldset .ui-fieldset-legend {
-	
-}
-
-.ui-fieldset {
-	border: 1px solid white !important;
-}
-
-.ui-panelgrid-cell {
-	
-}
-
-.noBorder {
-	border: none !important
-}
-
-.noBorder tr {
-	border: none !important
-}
-
-.noBorderX {
-	border: none !important
-}
-
-.noBorderX tr {
-	border: none !important
-}
-
-.noBorderX td {
-	border: none !important
-}
-
-#background {
+#header{
 	width: 100%;
-	height: 100%;
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	z-index: -9999;
-	Ensure div tag stays behind content; -999 might work, too.
+	color: white;
+	height: 40px;
+	margin-left: 35px;
+	margin-top: 35px;
+	font-size: x-large;
+	padding: 10px 33px 20px;
+	font-weight: bold;
+	font-family: verdana;
+}
+
+#footer{
+	width: 100%;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	height: 30px;
+	font-size: 15px;
+	font-family: verdana;
+}
+
+.panelGrid{
+	width: 200px;
+}
+.ui-widget-content{
+	background: transparent !important;
+}
+
+.ui-dialog{
+	background: white !important;
+	color: black !important;
+}
+
+.ui-tabs-top{
+	direction: ltr !important;
+}
+
+.ui-panelgrid td,.ui-panelgrid tr{
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	border-style: none !important;
+	background: #E6E6E6 !important;
+}
+
+.ui-tabs .ui-tabs-nav{
+	text-align: center !important;
 }
 
 
-.ui-datepicker-header{background-color:rgba(0,0,0,.8)!important;}
+.ui-datepicker thead{  
+    background-color: #EFF2FB !important; 
+}
 
-.ui-datepicker table{background-color:rgba(0,0,0,.8)!important;}  */
+.ui-datepicker .ui-widget-content .ui-datepicker-header{
+    background-color: #EFF2FB !important;
+}
+
+
+.ui-datepicker table{  
+    background-color: #EFF2FB !important;  
+} 
+.ui-datepicker th{ 
+	background-color: #EFF2FB !important;
+}
+
+.ui-fieldset{
+	max-width: 70% !important ; 
+	min-width: 1000px !important;
+	margin-top:30px !important; 
+}
+
+ .ui-panelgrid{
+ 	background:transparent !important;
+ 	 width:100% !important;
+ }
+ .ui-panelgrid td{
+  	background:transparent !important;
+ }
+ .ui-panelgrid  tr{
+   background:transparent !important;
+ }

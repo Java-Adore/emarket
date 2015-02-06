@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<div id="header">
+		<div>Webshop Store</div>
+		<div style="font-size: small;">&ensp;&ensp;&ensp;&ensp;&ensp;</div>
+	</div>
+	<p:tabMenu activeIndex="#{param.i}" cache="false">
+		<p:menuitem value="${loc.NAVIGATION_ADD_ADMIN}" outcome="login"
+			icon="ui-icon-star">
+			<f:param name="i" value="0" />
+		</p:menuitem>
+		<p:menuitem value="${loc.NAVIGATION_ADD_PRODUCT}" outcome="manageproducts"
+			icon="ui-icon-star">
+			<f:param name="i" value="1" />
+		</p:menuitem>
+		<p:menuitem value="${loc.NAVIGATION_CHANGE_PRODUCT_DETAILS}" outcome="registration"
+			icon="ui-icon-wrench">
+			<f:param name="i" value="2" />
+		</p:menuitem>
+	</p:tabMenu>
+</ui:composition>
