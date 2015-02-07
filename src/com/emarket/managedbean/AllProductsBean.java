@@ -107,8 +107,7 @@ public class AllProductsBean implements Serializable {
 
 		}
 		shoppingCart.addToCart(selectedProduct);
-		WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART, shoppingCart);
-		
+		WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART, shoppingCart);	
 		WebUtils.fireInfoMessage("PRODUCT_ADDED_TO_SHOPPING_CART");
 
 	}
