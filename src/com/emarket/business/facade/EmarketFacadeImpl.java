@@ -64,7 +64,10 @@ public class EmarketFacadeImpl implements EmarketFacade {
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setPassword(com.emarket.utils.Util.encrypt(password));
-		user.setRole(0);
+		if(user.getRole()!=1)
+		{
+			user.setRole(0);
+		}
 		user = memberService.addUser(user);
 		return user;
 

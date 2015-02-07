@@ -313,12 +313,12 @@ public class WebUtils {
 	}
 
 	public static void fireSuccessMessage() {
-		fireInfoMessage("ADDED_SUCCESSFULLY");
+		fireInfoMessage("Done");
 		
 	}
 
 	public static void fireFaildMessage() {
-		fireErrorMessage("ADDING_FAILD");
+		fireErrorMessage("FAILD");
 		
 	}
 }

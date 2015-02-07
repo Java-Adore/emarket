@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import com.emarket.general.Marker;
  
 @MappedSuperclass 
-public abstract class Product implements Comparable<Product>, Marker {
+public abstract class Product implements Comparable<Product>, Marker , Editable {
 	/**
 	 * 
 	 */
@@ -29,6 +29,8 @@ public abstract class Product implements Comparable<Product>, Marker {
 	@Column(name = "product_Type")
 	protected String productType;
 	
+	
+	private  boolean editMode;
 	
 
 	public Product() {
@@ -94,7 +96,7 @@ public abstract class Product implements Comparable<Product>, Marker {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((ID == null) ? 0 : ID.hashCode());
 		return result;
 	}
 
@@ -110,22 +112,6 @@ public abstract class Product implements Comparable<Product>, Marker {
 		this.price = price;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
 
 	@Override
 	public final int compareTo(Product other) {
@@ -143,5 +129,30 @@ public abstract class Product implements Comparable<Product>, Marker {
 
 	public void setID(Long iD) {
 		ID = iD;
+	}
+
+	public boolean isEditMode() {
+		return editMode;
+	}
+
+	public void setEditMode(boolean editMode) {
+		this.editMode = editMode;
+	} 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (ID == null) {
+			if (other.ID != null)
+				return false;
+		} else if (!ID.equals(other.ID))
+			return false;
+		return true;
 	}
 }

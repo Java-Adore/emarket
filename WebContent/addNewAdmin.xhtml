@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/master4Admin.xhtml">
+
+	<ui:define name="title">
+		<title>#{loc.REGISTER_PAGE_TITLE}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<center>
+			<p:fieldset legend="#{loc.REGISTER}"
+				style="margin-bottom:20px; max-width: 400px;">
+				<h:form>
+					<p:panelGrid id="idPanellogin" style="border:none; width:200px;">
+						<p:row>
+							<p:column>
+								<p:outputLabel value="#{loc.regNameLbl}" />
+							</p:column>
+							<p:column>
+								<p:inputText id="name" value="#{addNewAdmin.firstName}"
+									required="true" style="width:250px;"
+									requiredMessage="#{loc.GENERAL_FIRST_NAME_IS_REQUIRED}" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="#{loc.regFamilyLbl}" />
+							</p:column>
+							<p:column>
+								<p:inputText id="family" value="#{addNewAdmin.lastName}"
+									required="true" style="width:250px;"
+									requiredMessage="#{loc.GENERAL_LAST_NAME_IS_REQUIRED}" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="#{loc.regEmailLbl}" />
+							</p:column>
+							<p:column>
+								<p:inputText id="email" value="#{addNewAdmin.userName}"
+									required="true" style="width:250px;"
+									requiredMessage="#{loc.GENERAL_EMAIL_IS_REQUIRED}" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="#{loc.regPassLbl}" />
+							</p:column>
+							<p:column>
+								<p:password id="pass" value="#{addNewAdmin.password}"
+									requiredMessage="#{loc.GENERAL_PASSWORD_IS_REQUIRED}"
+									required="true" style="width:250px;"/>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel value="#{loc.regConfirmPassLbl}" />
+							</p:column>
+							<p:column>
+								<p:password id="confirmPass" value="#{addNewAdmin.confirmPass}" 
+									required="true" style="width:250px;"
+									requiredMessage="#{loc.GENERAL_CONFIRM_PASSWORD_IS_REQUIRED}" />
+							</p:column>
+						</p:row>
+						<p:row>
+						<p:column>
+								<p:commandButton id="submit" value="#{loc.regButt}" ajax="false"
+									update=":growlForm"
+									actionListener="#{addNewAdmin.register()}" />
+							
+						</p:column>
+					</p:row> 
+					</p:panelGrid>
+					
+				</h:form>
+				</p:fieldset>
+		</center>
+	</ui:define>
+</ui:composition>

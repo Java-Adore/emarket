@@ -99,7 +99,9 @@ public class ManageProductsBean implements Serializable {
 				activeHoney.setSource(flowerType);
 			}
 			activeHoney = emarketFacade.addNewHoneyProduct(activeHoney);
-			honeyList.add(activeHoney);
+			if (honeyList.contains(activeHoney) == false) {
+				honeyList.add(activeHoney);
+			}
 			WebUtils.fireSuccessMessage();
 
 		} catch (Exception ex) {
@@ -118,7 +120,9 @@ public class ManageProductsBean implements Serializable {
 		try {
 
 			activeWax = emarketFacade.addNewWaxProduct(activeWax);
-			waxList.add(activeWax);
+			if (waxList.contains(activeWax) == false) {
+				waxList.add(activeWax);
+			}
 			WebUtils.fireSuccessMessage();
 
 		} catch (Exception ex) {
@@ -137,7 +141,9 @@ public class ManageProductsBean implements Serializable {
 
 			activeMiscellaneous = emarketFacade
 					.addNewProduct(activeMiscellaneous);
-			miscellaneousList.add(activeMiscellaneous);
+			if (miscellaneousList.contains(activeMiscellaneous) == false) {
+				miscellaneousList.add(activeMiscellaneous);
+			}
 			WebUtils.fireSuccessMessage();
 
 		} catch (Exception ex) {
@@ -152,12 +158,14 @@ public class ManageProductsBean implements Serializable {
 	}
 
 	public void addNewFlower() {
-		
+
 		try {
 
-			activeflower = emarketFacade
-					.addNewFlowerProduct(activeflower);
+			activeflower = emarketFacade.addNewFlowerProduct(activeflower);
+			if(flowersList.contains(activeflower)==false)
+			{
 			flowersList.add(activeflower);
+			}
 			WebUtils.fireSuccessMessage();
 
 		} catch (Exception ex) {
@@ -168,7 +176,6 @@ public class ManageProductsBean implements Serializable {
 			activeflower = new Flower();
 
 		}
-
 
 	}
 
@@ -212,4 +219,56 @@ public class ManageProductsBean implements Serializable {
 		this.flowerType = flowerType;
 	}
 
+	public void edit(Editable editable) {
+		editable.setEditMode(true);
+
+		if (editable instanceof Honey) {
+			activeHoney = (Honey) editable;
+			WebUtils.invokeJavaScriptFunction("PF('honeyDialog').show();");
+		} else if (editable instanceof Wax) {
+			activeWax = (Wax) editable;
+
+			WebUtils.invokeJavaScriptFunction(" PF('waxDialog').show();");
+
+		} else if (editable instanceof Miscellaneous) {
+			activeMiscellaneous = (Miscellaneous) editable;
+			WebUtils.invokeJavaScriptFunction(" PF('miscellaneousDialog').show();");
+
+		} else if (editable instanceof Flower) {
+			activeflower = (Flower) editable;
+			WebUtils.invokeJavaScriptFunction("PF('flowerDialog').show();");
+
+		}
+	}
+	
+	
+	public void cancel() {
+
+			activeHoney = new Honey();
+			WebUtils.invokeJavaScriptFunction("PF('honeyDialog').hide();");
+		
+			activeWax = new Wax();
+
+			WebUtils.invokeJavaScriptFunction(" PF('waxDialog').hide();");
+
+			activeMiscellaneous = new Miscellaneous();
+			WebUtils.invokeJavaScriptFunction(" PF('miscellaneousDialog').hide();");
+
+			activeflower = new Flower() ; 
+			WebUtils.invokeJavaScriptFunction("PF('flowerDialog').hide();");
+
+		
+	}
+	
+	public void refresh()
+	{
+		activeHoney = new Honey();
+	
+		activeWax = new Wax();
+
+		activeMiscellaneous = new Miscellaneous();
+
+		activeflower = new Flower() ; 
+
+	}
 }
