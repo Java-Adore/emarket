@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import com.emarket.general.Marker;
  
@@ -29,7 +30,7 @@ public abstract class Product implements Comparable<Product>, Marker , Editable 
 	@Column(name = "product_Type")
 	protected String productType;
 	
-	
+	@Transient
 	private  boolean editMode;
 	
 
