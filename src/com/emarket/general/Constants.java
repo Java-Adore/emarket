@@ -73,6 +73,8 @@ public class Constants implements Serializable {
 	public static final String EVENT_TO_JOIN = "EVENT_TO_JOIN";
 	public static final String PLEASE_SIGN_IN_OR_REGISTER = "PLEASE_SIGN_IN_OR_REGISTER";
 	public static final String YOU_ARE_THE_CREATOR_OF_THE_EVENT = "YOU_ARE_THE_CREATOR_OF_THE_EVENT";
+	
+	public static final String CURRENT_SHOPING_CART = "currentShoppingCart";
 
 	
 }

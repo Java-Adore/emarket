@@ -34,7 +34,7 @@
 
 							<p:commandLink update=":form:productDetail"
 								oncomplete="PF('ProductDialog').show()" title="View Detail">
-								<h:outputText style="margin:0 auto;" styleClass="detailsImage"/>
+								<h:outputText style="margin:0 auto;" styleClass="ui-icon ui-icon-search"/>
 								<f:setPropertyActionListener value="#{product}"
 									target="#{allProductsBean.selectedProduct}" />
 							</p:commandLink>
@@ -65,7 +65,7 @@
 							<h:outputText value="" />
 							<p:commandButton id="addToCart" value="#{loc.ADD_TO_CART}"
 								ajax="false" update=":growlForm"
-								actionListener="#{allProductsBean.addToCart(allProductsBean.selectedProduct)}" />
+								actionListener="#{allProductsBean.addToCart(allProductsBean.selectedProduct)}"  />
 						</p:panelGrid>
 					</p:outputPanel>
 				</p:dialog>

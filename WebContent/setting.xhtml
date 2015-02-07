@@ -21,7 +21,6 @@
 								<p:inputText id="name" value="#{settingBean.user.firstName}"
 									required="true" style="width:250px;" disabled="true"
 									requiredMessage="#{loc.GENERAL_FIRST_NAME_IS_REQUIRED}" />
-							
 								<p:outputLabel value="#{loc.GENERAL_LAST_NAME}" />
 								<p:inputText id="lastName" value="#{settingBean.user.lastName}"
 									required="true" style="width:250px;" disabled="true"
@@ -31,11 +30,8 @@
 								<p:inputText id="email" value="#{settingBean.user.userName}"
 									required="true" style="width:250px;" disabled="true"
 									requiredMessage="#{loc.GENERAL_EMAIL_IS_REQUIRED}" />
-						
-								
 								<p:commandButton value="#{loc.GENERAL_EDIT}" type="button"
 									onclick="PF('editAccountDialog').show();" />
-							
 					</p:panelGrid>
 				</h:form>
 				</p:fieldset>
