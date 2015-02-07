@@ -11,20 +11,22 @@
 
 	<ui:define name="content">
 		<br />
-		<h:form>
-			<p:panelGrid columns="2" styleClass="panelGrid">
-				<p:outputLabel value="#{loc.usernameLbl}" />
-				<p:inputText id="email" value="#{loginBean.userName}"
-					style="width:250px;" required="true" />
-					
-				<p:outputLabel value="#{loc.passwordLbl}" />
-				<p:password id="pass" value="#{loginBean.password}"
-					style="width:250px;" required="true" />
-				
-				<p:commandButton id="submit" value="#{loc.LOGIN}"
-					actionListener="#{loginBean.login()}" update=":growl" />
-			</p:panelGrid>
-		</h:form>
+		<p:fieldset legend="#{loc.LOGIN}"
+			style="margin-bottom:20px width:400px;">
+			<h:form>
+				<p:panelGrid columns="2" styleClass="panelGrid">
+					<p:outputLabel value="#{loc.usernameLbl}" />
+					<p:inputText id="email" value="#{loginBean.userName}"
+						style="width:250px;" required="true" />
 
+					<p:outputLabel value="#{loc.passwordLbl}" />
+					<p:password id="pass" value="#{loginBean.password}"
+						style="width:250px;" required="true" />
+
+					<p:commandButton id="submit" value="#{loc.LOGIN}"
+						actionListener="#{loginBean.login()}" update=":growl" />
+				</p:panelGrid>
+			</h:form>
+		</p:fieldset>
 	</ui:define>
 </ui:composition>
