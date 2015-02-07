@@ -32,8 +32,10 @@
 								value="#{product.description}" maxlength="50" autoResize="false" />
 						</p:column>
 						<p:column headerText="#{loc.EDIT}">
+							<center>
 							<p:commandButton value="#{loc.EDIT}"
 								actionListener="#{manageProductsBean.edit(product)}" update=":honeyForm" />
+							</center>
 						</p:column>
 					</p:dataTable>
 				</p:tab>

@@ -4,11 +4,9 @@ body{
 #header{
 	width: 100%;
 	color: white;
-	height: 40px;
-	margin-left: 35px;
-	margin-top: 35px;
+	height: 100%;
 	font-size: x-large;
-	padding: 10px 33px 20px;
+	padding: 0px 0px 0px 0px;;
 	font-weight: bold;
 	font-family: verdana;
 }

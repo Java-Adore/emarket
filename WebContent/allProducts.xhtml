@@ -29,12 +29,11 @@
 						<h:panelGrid columns="1" style="width:100%">
 							<p:graphicImage name="images/mainImage.png" />
 
-							<h:outputText value="Price: " />
-							<h:outputText value="#{product.price} $" />
+							<h:outputText value="Price: #{product.price} $" />
 
 							<p:commandLink update=":form:productDetail"
 								oncomplete="PF('ProductDialog').show()" title="View Detail">
-								<h:outputText style="margin:0 auto;" styleClass="detailsImage"/>
+								<h:outputText style="margin:0 auto;" styleClass="ui-icon ui-icon-search"/>
 								<f:setPropertyActionListener value="#{product}"
 									target="#{allProductsBean.selectedProduct}" />
 							</p:commandLink>

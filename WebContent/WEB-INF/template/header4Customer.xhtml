@@ -7,21 +7,36 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 	<div id="header">
-		<div>Webshop Store</div>
-		<div style="font-size: small;">&ensp;&ensp;&ensp;&ensp;&ensp;</div>
+		<table
+			style="width: 100%; height: 100%; margin-top: 0px; padding-top: 0px;"
+			border="0">
+			<tr style="height: 70%;">
+				<td width="40%">
+					<div style="margin-left: 35px; margin-top: 15px;">Webshop
+						Store</div> <br />
+				</td>
+				<td width="40%">
+					<div style="font-size: small;">&ensp;&ensp;&ensp;&ensp;&ensp;</div>
+				</td>
+				<td width="20%" style="text-align: left; font-size: small;">
+					<div>Login</div>
+					<div>Logout</div>
+					<div>Items in Cart: 0</div>
+				</td>
+			</tr>
+			<tr style="font-size: 17px;">
+				<td colspan="3">
+					<p:tabMenu activeIndex="#{param.i}" cache="false">
+
+						<p:menuitem value="${loc.ALL_PRODUCTS}" outcome="allProducts"
+							icon="ui-icon-star">
+							<f:param name="i" value="0" />
+						</p:menuitem>
+
+					</p:tabMenu>
+				</td>
+			</tr>
+		</table>
 	</div>
-	<p:tabMenu activeIndex="#{param.i}" cache="false">
-		<p:menuitem value="${loc.NAVIGATION_ADD_ADMIN}" outcome="login"
-			icon="ui-icon-star">
-			<f:param name="i" value="0" />
-		</p:menuitem>
-		<p:menuitem value="${loc.ALL_PRODUCTS}" outcome="allProducts"
-			icon="ui-icon-star">
-			<f:param name="i" value="1" />
-		</p:menuitem>
-		<p:menuitem value="${loc.NAVIGATION_CHANGE_PRODUCT_DETAILS}" outcome="registration"
-			icon="ui-icon-wrench">
-			<f:param name="i" value="2" />
-		</p:menuitem>
-	</p:tabMenu>
+
 </ui:composition>
