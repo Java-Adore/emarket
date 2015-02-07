@@ -108,6 +108,7 @@ public class AllProductsBean implements Serializable {
 		}
 		shoppingCart.addToCart(selectedProduct);
 		WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART, shoppingCart);	
+		WebUtils.invokeJavaScriptFunction("updateCountForm()");
 		WebUtils.fireInfoMessage("PRODUCT_ADDED_TO_SHOPPING_CART");
 
 	}
@@ -116,5 +117,23 @@ public class AllProductsBean implements Serializable {
 	public ShoppingCart getCurrentShoppingCart()
 	{
 		return (ShoppingCart)WebUtils.extractFromSession(Constants.CURRENT_SHOPING_CART);
+	}
+	
+	
+	public int  numberOfItems()
+	{
+		int count=0;
+		ShoppingCart shoppingCart = getCurrentShoppingCart();
+		if(shoppingCart!=null)
+		{
+			
+			
+			for (Integer i : shoppingCart.getOrders().values())
+			{
+				count +=i;
+			}
+		}
+		return count;
+
 	}
 }

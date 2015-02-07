@@ -21,7 +21,10 @@
 				<td width="20%" style="text-align: left; font-size: small;">
 					<div>Login</div>
 					<div>Logout</div>
-					<div>Items in Cart: 0</div>
+					<div>Items in Cart: <h:form id="countForm" >
+					<p:outputLabel  value="#{allProductsBean.numberOfItems()}"/>
+					<p:remoteCommand update="countForm" name="updateCountForm"  />
+					</h:form></div>
 				</td>
 			</tr>
 			<tr style="font-size: 17px;">

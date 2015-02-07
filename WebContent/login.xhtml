@@ -26,6 +26,9 @@
 
 						<p:commandButton id="submit" value="#{loc.LOGIN}"
 							actionListener="#{loginBean.login()}" update=":growl" />
+							
+							<p:commandButton id="reg" value="#{loc.REFISTRATION}"
+							action="registration.xhtml" ajax="false" immediate="true" />
 					</p:panelGrid>
 				</h:form>
 			</p:fieldset>
