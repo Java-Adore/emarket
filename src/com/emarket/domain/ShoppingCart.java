@@ -19,22 +19,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 
-@Entity
 public class ShoppingCart implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue 
 	private Long id;
 	private Date date;
 	private User user;
-	
-	@ElementCollection
+		
 	private Map<Product, Integer> orders = new HashMap<Product, Integer>();
 
-	@Enumerated
 	private OrderStatus status;
 	
 	public ShoppingCart() {
