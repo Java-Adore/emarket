@@ -32,9 +32,6 @@ public class ShoppingCart implements Serializable{
 	private User user;
 	
 	@ElementCollection
-    @MapKeyColumn(name="name")
-    @Column(name="value")
-    @CollectionTable(name="example_attributes", joinColumns=@JoinColumn(name="example_id"))
 	private Map<Product, Integer> orders = new HashMap<Product, Integer>();
 
 	@Enumerated

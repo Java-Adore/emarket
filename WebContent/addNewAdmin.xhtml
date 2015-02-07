@@ -12,7 +12,7 @@
 	<ui:define name="content">
 		<br />
 		<center>
-			<p:fieldset legend="#{loc.REGISTER}"
+			<p:fieldset legend="#{loc.ADD_NEW_ADMIN}"
 				style="margin-bottom:20px; max-width: 400px;">
 				<h:form>
 					<p:panelGrid id="idPanellogin" style="border:none; width:200px;">
@@ -68,7 +68,7 @@
 						</p:row>
 						<p:row>
 						<p:column>
-								<p:commandButton id="submit" value="#{loc.regButt}" ajax="false"
+								<p:commandButton id="submit" value="#{loc.GENERAL_ADD}" ajax="false"
 									update=":growlForm"
 									actionListener="#{addNewAdmin.register()}" />
 							
