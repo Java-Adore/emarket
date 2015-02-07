@@ -122,7 +122,8 @@ public class SettingBean implements Serializable {
 				initAccount(newUser);
 				WebUtils.injectIntoSession(Constants.CURRENT_LOGGED_USER, newUser);
 				this.oldPassword=newPassword;
-				WebUtils.fireErrorMessage("UPDATED_SUCCESSFULLY");
+				WebUtils.fireInfoMessage("UPDATED_SUCCESSFULLY");
+				WebUtils.invokeJavaScriptFunction("PF('editAccountDialog').hide()"); 
 			}
 			
 		} else {
