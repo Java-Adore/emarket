@@ -20,6 +20,8 @@ public interface EmarketFacade  {
 
 	User getUserByID(Long l);
 	
+	void updateUserByID(User user);
+	
 	User login(String userName , String password)throws EMarketException ;
 	
 	User register(String firstName, String lastName, String userName, String password, String confirmPassword, String pictureURL) throws EMarketException ;

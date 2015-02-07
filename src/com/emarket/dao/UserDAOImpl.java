@@ -54,5 +54,26 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 
 	}
 
+	@Override
+	public void updateUserByID(User user) {
+		EntityTransaction transaction = getEntityManager().getTransaction();
+		try {
+			if (transaction.isActive() == false) {
+				transaction.begin();
+			}
+			Query query = getEntityManager().createQuery(
+					"update User u set u.firstName=:firstName , u.lastName=:lastName , u.userName=:userName , u.password=:password where u.ID=:ID");
+			
+			query.setParameter("ID", user.getID());
+			query.setParameter("firstName", user.getFirstName());
+			query.setParameter("lastName", user.getLastName());
+			query.setParameter("userName", user.getUserName());
+			query.setParameter("password", user.getPassword());
+			query.executeUpdate();
+		} finally {
+			transaction.commit();
+		}
+	}
+
 
 }

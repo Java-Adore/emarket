@@ -22,6 +22,8 @@ public interface MemberService extends Serializable{
 	User getUserByID(Long l);
 	
 	public User getUserByUserName(String username);
+
+	void updateUserByID(User user);
 	
 
 

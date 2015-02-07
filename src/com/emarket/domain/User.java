@@ -2,6 +2,7 @@ package com.emarket.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import com.emarket.general.Marker;
 
 @Entity
+@Cacheable(false)
 public class User implements Serializable , Marker{
 
 	/**

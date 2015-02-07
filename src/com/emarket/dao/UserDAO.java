@@ -21,6 +21,8 @@ public interface UserDAO extends Serializable{
 	User getUserByID(Long l);
 
 	User getUserByUserName(String userName);
+
+	void updateUserByID(User user);
 	
 	
 

@@ -39,17 +39,24 @@ public class MemberServiceImpl implements MemberService {
 
 	
 	public List<User> getAllUsers() {
-		return null;
+		return userDAO.getAllUsers();
 	}
 
 	
 	public User getUserByID(Long l) {
-		return null;
+		return userDAO.getUserByID(l);
 	}
 
 	@Override
 	public  User getUserByUserName(String userName) {
 		return userDAO.getUserByUserName(userName);
+	}
+
+
+	@Override
+	public void updateUserByID(User user) {
+		// TODO Auto-generated method stub
+		userDAO.updateUserByID(user);
 	}
 
 	

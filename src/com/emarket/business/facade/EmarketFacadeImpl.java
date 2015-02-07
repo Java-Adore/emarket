@@ -29,15 +29,21 @@ public class EmarketFacadeImpl implements EmarketFacade {
 	@Override
 	public List<User> getAllUsers() {
 		
-		return null;
+		return memberService.getAllUsers();
 	}
 
 	@Override
 	public User getUserByID(Long l) {
 		
-		return null;
+		return memberService.getUserByID(l);
 	}
 
+	@Override
+	public void updateUserByID(User user) {
+		// TODO Auto-generated method stub
+		memberService.updateUserByID(user);
+	}
+	
 	public User login(String userName, String password) throws EMarketException {
 
 		User member = memberService.getUserByUserName(userName);
@@ -118,4 +124,6 @@ public class EmarketFacadeImpl implements EmarketFacade {
 		
 		return productService.addNewHoneyProduct(product);
 	}
+
+	
 }
