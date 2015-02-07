@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import com.emarket.general.Marker;
 
 @Entity
-public class Flower implements Marker {
+public class Flower implements Marker ,Editable{
 
 	/**
 	 * 
@@ -17,6 +17,8 @@ public class Flower implements Marker {
 	private Long ID;
 	private String name;
 	private String description;
+	
+	private boolean editMode;
 	
 	public Flower(){}
 	public Flower(String name, String description) {
@@ -79,6 +81,12 @@ public class Flower implements Marker {
 		} else if (!ID.equals(other.ID))
 			return false;
 		return true;
+	}
+	public boolean isEditMode() {
+		return editMode;
+	}
+	public void setEditMode(boolean editMode) {
+		this.editMode = editMode;
 	}
 
 }
