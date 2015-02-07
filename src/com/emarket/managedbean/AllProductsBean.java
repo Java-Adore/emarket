@@ -13,6 +13,7 @@ import org.hibernate.dialect.FirebirdDialect;
 
 import com.emarket.business.facade.EmarketFacade;
 import com.emarket.domain.*;
+import com.emarket.general.Constants;
 import com.emarket.utils.WebUtils;
 
 @ManagedBean
@@ -31,7 +32,7 @@ public class AllProductsBean implements Serializable {
 	private List<Miscellaneous> miscellaneousList;
 	private List<Wax> waxList;
 	private List<Product> allProducts;
-	
+
 	private Product selectedProduct;
 
 	@PostConstruct
@@ -40,13 +41,13 @@ public class AllProductsBean implements Serializable {
 		miscellaneousList = emarketFacade.getAllMiscellaneousProducts();
 		waxList = emarketFacade.getAllWaxProducts();
 		allProducts = new ArrayList<>();
-		if(honeyList!=null && honeyList.size()>0)
+		if (honeyList != null && honeyList.size() > 0)
 			allProducts.addAll(honeyList);
-		if(waxList!=null && waxList.size()>0)
+		if (waxList != null && waxList.size() > 0)
 			allProducts.addAll(waxList);
-		if(miscellaneousList!=null && miscellaneousList.size()>0)
+		if (miscellaneousList != null && miscellaneousList.size() > 0)
 			allProducts.addAll(miscellaneousList);
-		
+
 	}
 
 	public EmarketFacade getEmarketFacade() {
@@ -81,15 +82,13 @@ public class AllProductsBean implements Serializable {
 		this.waxList = waxList;
 	}
 
-	
 	public List<Product> getAllProducts() {
 		return allProducts;
 	}
 
-	public void setAllProducts(List<Product> allProducts) {
+	public void setAllProducts(List<Product> allProducts) { 
 		this.allProducts = allProducts;
 	}
-	
 
 	public Product getSelectedProduct() {
 		return selectedProduct;
@@ -99,9 +98,23 @@ public class AllProductsBean implements Serializable {
 		this.selectedProduct = selectedProduct;
 	}
 
-	public void addToCart(Product selectedProduct){
-		System.out.println("productID = " + selectedProduct.getID());
-		System.out.println("================ addToChart() ============");
+	public void addToCart(Product selectedProduct) {
+
+		ShoppingCart shoppingCart = (ShoppingCart) WebUtils
+				.extractFromSession(Constants.CURRENT_SHOPING_CART);
+		if (shoppingCart == null) {
+			shoppingCart = new ShoppingCart();
+
+		}
+		shoppingCart.addToCart(selectedProduct);
+		WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART, shoppingCart);	
+		WebUtils.fireInfoMessage("PRODUCT_ADDED_TO_SHOPPING_CART");
+
 	}
+
 	
+	public ShoppingCart getCurrentShoppingCart()
+	{
+		return (ShoppingCart)WebUtils.extractFromSession(Constants.CURRENT_SHOPING_CART);
+	}
 }
