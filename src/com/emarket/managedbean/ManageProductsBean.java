@@ -225,7 +225,7 @@ public class ManageProductsBean implements Serializable {
 		if (editable instanceof Honey) {
 			activeHoney = (Honey) editable;
 			WebUtils.invokeJavaScriptFunction("PF('honeyDialog').show();");
-		} else if (editable instanceof Wax) {
+		} else if (editable instanceof Wax) { 
 			activeWax = (Wax) editable;
 
 			WebUtils.invokeJavaScriptFunction(" PF('waxDialog').show();");
@@ -262,13 +262,38 @@ public class ManageProductsBean implements Serializable {
 	
 	public void refresh()
 	{
-		activeHoney = new Honey();
 	
-		activeWax = new Wax();
 
 		activeMiscellaneous = new Miscellaneous();
 
 		activeflower = new Flower() ; 
+
+	}
+	
+	
+	public void refreshAndShowHoneyDialog()
+	{
+		activeHoney = new Honey(); 
+		WebUtils.invokeJavaScriptFunction("PF('honeyDialog').show();");
+
+	}
+	
+	public void refreshAndShowWaxDialog()
+	{
+		activeWax = new Wax();
+		WebUtils.invokeJavaScriptFunction("PF('waxDialog').show();");
+	}
+	
+	public void refreshAndShowMiscellaneousDialog()
+	{
+		activeMiscellaneous = new Miscellaneous();
+		WebUtils.invokeJavaScriptFunction("PF('miscellaneousDialog').show();");
+	}
+	
+	public void refreshAndShowFlowersDialog()
+	{
+		activeflower = new Flower();
+		WebUtils.invokeJavaScriptFunction("PF('flowerDialog').show();");
 
 	}
 }
