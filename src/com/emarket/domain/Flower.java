@@ -3,6 +3,7 @@ package com.emarket.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import com.emarket.general.Marker;
 
@@ -18,6 +19,7 @@ public class Flower implements Marker ,Editable{
 	private String name;
 	private String description;
 	
+	@Transient
 	private boolean editMode;
 	
 	public Flower(){}

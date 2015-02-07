@@ -23,6 +23,10 @@ body{
 	font-family: verdana;
 }
 
+.detailsImage{
+	background-image: url(#{ resource ['images/details.png']}) !important;
+}
+
 .panelGrid{
 	width: 200px;
 }
