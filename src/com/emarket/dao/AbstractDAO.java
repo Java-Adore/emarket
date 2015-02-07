@@ -18,7 +18,6 @@ import javax.persistence.Query;
 import com.emarket.general.Constants;
 import com.emarket.general.Marker;
 
-
 @Singleton
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -33,11 +32,10 @@ public abstract class AbstractDAO<T extends Marker> implements Serializable {
 
 	public AbstractDAO() {
 	}
-	
+
 	@PostConstruct
-	public void init()
-	{
-		
+	public void init() {
+
 	}
 
 	public AbstractDAO(EntityManager entityManager) {
@@ -49,7 +47,6 @@ public abstract class AbstractDAO<T extends Marker> implements Serializable {
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
-	
 
 	public T persist(T t) {
 		EntityTransaction transaction = null;
@@ -61,14 +58,33 @@ public abstract class AbstractDAO<T extends Marker> implements Serializable {
 			t = entityManager.merge(t);
 			transaction.commit();
 			return t;
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			transaction.rollback();
 			return null;
 
 		}
-		
+
+	}
+
+	public void addOrUpdate(Object t) {
+		EntityTransaction transaction = null;
+		try {
+			transaction = entityManager.getTransaction();
+			if (transaction.isActive() == false) {
+				transaction.begin();
+			}
+			t = entityManager.merge(t);
+			transaction.commit();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			transaction.rollback();
+			throw new RuntimeException();
+
+		}
+
 	}
 
 	public T getEntityByID(Class clss, Long ID) {
@@ -115,13 +131,11 @@ public abstract class AbstractDAO<T extends Marker> implements Serializable {
 			if (transaction.isActive() == false) {
 				transaction.begin();
 			}
-			if(x.getID()!=null)
-			{
-			x = entityManager.merge(x);
-			}else
-			{
-				 entityManager.persist(x);
-				 
+			if (x.getID() != null) {
+				x = entityManager.merge(x);
+			} else {
+				entityManager.persist(x);
+
 			}
 			transaction.commit();
 		} catch (Exception ex) {
@@ -138,7 +152,5 @@ public abstract class AbstractDAO<T extends Marker> implements Serializable {
 		entityManager.refresh(marked);
 
 	}
-	
-	
 
 }

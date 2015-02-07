@@ -5,8 +5,9 @@ import javax.ejb.Local;
 
 import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
+import com.emarket.domain.IllegalStateTransitionException;
 import com.emarket.domain.Miscellaneous;
-import com.emarket.domain.Product;
+import com.emarket.domain.ShoppingCart;
 import com.emarket.domain.User;
 import com.emarket.domain.Wax;
 import com.emarket.general.EMarketException;
@@ -41,6 +42,8 @@ public interface EmarketFacade  {
 	List<Honey> getAllHoneyProducts();
 
 	Honey addNewHoneyProduct(Honey product);
+
+	void handleShoppingCart(ShoppingCart shoppingCart, User user, boolean immediate) throws IllegalStateTransitionException ;
 
 	
 

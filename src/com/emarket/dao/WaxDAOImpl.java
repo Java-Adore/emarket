@@ -31,4 +31,9 @@ public class WaxDAOImpl extends AbstractDAO<Wax>implements WaxDAO {
 		return super.findAll(Wax.class);
 	}
 
+	@Override
+	public Wax getProductById(Long id) {
+		return super.getEntityByID(Wax.class,id);
+	}
+
 }

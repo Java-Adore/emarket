@@ -21,23 +21,28 @@
 				<td width="20%" style="text-align: left; font-size: small;">
 					<div>Login</div>
 					<div>Logout</div>
-					<div>Items in Cart: <h:form id="countForm" >
-					<p:outputLabel  value="#{allProductsBean.numberOfItems()}"/>
-					<p:remoteCommand update="countForm" name="updateCountForm"  />
-					</h:form></div>
+					<div>
+						Items in Cart:
+						<h:form id="countForm">
+							<p:outputLabel value="#{allProductsBean.numberOfItems()}" />
+							<p:remoteCommand update="countForm" name="updateCountForm" />
+							<p:commandButton actionListener="#{orderBean.makeOrder()}">
+								<p:graphicImage library="images" name="checkout.gif" />
+							</p:commandButton>
+						</h:form>
+					</div>
 				</td>
 			</tr>
 			<tr style="font-size: 17px;">
-				<td colspan="3">
-					<p:tabMenu activeIndex="#{param.i}" cache="false">
+				<td colspan="3"><p:tabMenu activeIndex="#{param.i}"
+						cache="false">
 
 						<p:menuitem value="${loc.ALL_PRODUCTS}" outcome="allProducts"
 							icon="ui-icon-star">
 							<f:param name="i" value="0" />
 						</p:menuitem>
 
-					</p:tabMenu>
-				</td>
+					</p:tabMenu></td>
 			</tr>
 		</table>
 	</div>

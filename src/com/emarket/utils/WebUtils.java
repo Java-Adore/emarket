@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-import com.emarket.entity.Member;
+import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.utils.Util;
 import com.emarket.utils.WebUtils;
@@ -137,8 +137,8 @@ public class WebUtils {
 
 	}
 
-	public static Member getCurrentUser() {
-		return (Member) extractFromSession(Constants.CURRENT_LOGGED_USER);
+	public static User getCurrentUser() {
+		return (User) extractFromSession(Constants.CURRENT_LOGGED_USER);
 	}
 
 	public static void invokeJavaScriptFunction(String functionWithParameter) {

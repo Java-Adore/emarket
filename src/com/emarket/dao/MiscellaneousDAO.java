@@ -16,6 +16,6 @@ public interface MiscellaneousDAO extends Serializable{
 
 	List<Miscellaneous> getAllProducts();
 
-	
+	Miscellaneous getProductById(Long id);
 
 }

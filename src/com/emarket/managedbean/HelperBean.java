@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import com.emarket.entity.Member;
+import com.emarket.domain.User;
 import com.emarket.general.Constants;
 import com.emarket.utils.Util;
 import com.emarket.utils.WebUtils;
@@ -46,7 +46,7 @@ public class HelperBean implements Serializable {
 		}
 	}
 	 
-	public Member getCurrentMember()
+	public User getCurrentMember()
 	{
 		return WebUtils.getCurrentUser();
 	}

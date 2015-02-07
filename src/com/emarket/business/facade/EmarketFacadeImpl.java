@@ -1,6 +1,9 @@
 package com.emarket.business.facade;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -10,7 +13,10 @@ import com.emarket.business.service.ProductService;
 import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
 import com.emarket.domain.Miscellaneous;
+import com.emarket.domain.Order;
+import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
+import com.emarket.domain.ShoppingCart;
 import com.emarket.domain.User;
 import com.emarket.domain.Wax;
 import com.emarket.general.Constants;
@@ -126,6 +132,33 @@ public class EmarketFacadeImpl implements EmarketFacade {
 	public Honey addNewHoneyProduct(Honey product) {
 		
 		return productService.addNewHoneyProduct(product);
+	}
+
+	@Override
+	public void handleShoppingCart(ShoppingCart shoppingCart , User user,boolean immediate) {
+
+		Order order = new Order();
+		order.setOrderDate(new Date());
+		order.setUser(user);
+		
+		order = productService.addNewOrder(order);
+		
+		Map<Integer,Product> map = new HashMap();
+		
+		for(Product p : shoppingCart.getOrders().keySet())
+		{
+			Product currentProduct = productService.getProduct(p);
+			
+			map.put(shoppingCart.getOrders().get(p), currentProduct);
+			
+			OrderItem orderItem = new OrderItem();
+			orderItem.setAmount( shoppingCart.getOrders().get(p));
+			orderItem.setPrice(p.getPrice());
+			orderItem.setProduct(p);
+			orderItem.setOrder(order);
+			productService.addNewOrderItem(orderItem);
+		}
+		
 	}
 
 	

@@ -8,10 +8,14 @@ import javax.ejb.Stateless;
 import com.emarket.dao.FlowerDAO;
 import com.emarket.dao.HoneyDAO;
 import com.emarket.dao.MiscellaneousDAO;
+import com.emarket.dao.OrderDAO;
+import com.emarket.dao.UserDAO;
 import com.emarket.dao.WaxDAO;
 import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
 import com.emarket.domain.Miscellaneous;
+import com.emarket.domain.Order;
+import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
 import com.emarket.domain.Wax;
 
@@ -34,6 +38,13 @@ public class ProductServiceImpl implements ProductService {
 	
 	@EJB
 	WaxDAO waxDAO;
+	
+	@EJB
+	OrderDAO orderDAO;
+	
+	
+	
+	
 
 	@Override
 	public List<Flower> getAllFlowersProducts() {
@@ -81,6 +92,23 @@ public class ProductServiceImpl implements ProductService {
 	public Honey addNewHoneyProduct(Honey product) {
 		
 		return honeyDAO.addNewProduct(product);
+	}
+
+	@Override
+	public Order addNewOrder(Order order) {
+		return orderDAO.addNewOrder(order);
+	}
+
+	@Override
+	public void addNewOrderItem(OrderItem orderItem) {
+		orderDAO.addNewOrderItem(orderItem);
+		
+	}
+
+	@Override
+	public Product getProduct(Product product) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -6,11 +6,12 @@ import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 
 import com.emarket.domain.Honey;
-import com.emarket.domain.Miscellaneous;
+import com.emarket.domain.Order;
+import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
 
 @Singleton
-public class HonyDAOImpl extends AbstractDAO<Honey>implements HoneyDAO {
+public class OrderDAOImpl extends AbstractDAO<Order>implements OrderDAO {
 
 	/**
 	 * 
@@ -19,23 +20,21 @@ public class HonyDAOImpl extends AbstractDAO<Honey>implements HoneyDAO {
 	EntityManager entityManager = getEntityManagerFactory()
 			.createEntityManager();
 
-	public HonyDAOImpl() {
+	public OrderDAOImpl() {
 		super.setEntityManager(entityManager);
 	}
 
 	@Override
-	public Honey addNewProduct(Honey product) {
-		return super.persist(product);
+	public Order addNewOrder(Order order) {
+		return super.persist(order);
 	}
 
 	@Override
-	public List<Honey> getAllProducts() {
-		return super.findAll(Honey.class);
+	public void addNewOrderItem(OrderItem orderItem) {
+		super.addOrUpdate(orderItem);
+		
 	}
+
 	
-	@Override
-	public Honey getProductById(Long id) {
-		return super.getEntityByID(Honey.class,id);
-	}
 
 }

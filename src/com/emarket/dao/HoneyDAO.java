@@ -14,7 +14,8 @@ public interface HoneyDAO extends Serializable{
 	Honey addNewProduct(Honey product);
 
 	List<Honey> getAllProducts();
-
 	
+	
+	Honey getProductById(Long id);
 
 }
