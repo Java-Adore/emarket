@@ -152,7 +152,9 @@ public class EmarketFacadeImpl implements EmarketFacade {
 			map.put(shoppingCart.getOrders().get(p), currentProduct);
 			
 			OrderItem orderItem = new OrderItem();
-			orderItem.setAmount( shoppingCart.getOrders().get(p));
+			
+				orderItem.setAmount( shoppingCart.getOrders().get(p));
+			
 			orderItem.setPrice(p.getPrice());
 			orderItem.setProduct(p);
 			orderItem.setOrder(order);

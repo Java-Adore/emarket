@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import com.emarket.business.facade.EmarketFacade;
+import com.emarket.domain.IllegalStateTransitionException;
 import com.emarket.domain.ShoppingCart;
 import com.emarket.general.Constants;
 import com.emarket.utils.WebUtils;
@@ -35,7 +36,12 @@ public class OrderBean implements Serializable {
 		ShoppingCart shoppingCart = getCurrentShoppingCart();
 		if(shoppingCart !=null)
 		{
-			memberFacade.handleShoppingCart(shoppingCart, WebUtils.getCurrentUser());
+			try {
+				memberFacade.handleShoppingCart(shoppingCart, WebUtils.getCurrentUser(),true);
+			} catch (IllegalStateTransitionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
