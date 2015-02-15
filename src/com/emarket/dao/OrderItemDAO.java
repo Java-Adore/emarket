@@ -5,15 +5,13 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
+import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
 
 @Local
-public interface FlowerDAO extends Serializable{
+public interface OrderItemDAO extends Serializable{
 
-	Flower addNewProduct(Flower product);
-
-	List<Flower> getAllProducts();
+	OrderItem addNewOrderItem(OrderItem orderItem);
 
 }

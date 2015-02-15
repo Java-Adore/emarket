@@ -22,6 +22,9 @@
 <f:view contentType="text/html">
 
 	<h:body dir="#{loc.dir}">
+		<h:form>
+			#{helperBean.validateCurrentUser()}
+		</h:form>
 		<div id="mainDiv">
 			<h:form id="growl">
 				<p:growl />

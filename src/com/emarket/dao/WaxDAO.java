@@ -17,6 +17,6 @@ public interface WaxDAO extends Serializable{
 
 	Wax getProductById(Long id);
 
-	
+	void updateProduct(Wax product);
 
 }

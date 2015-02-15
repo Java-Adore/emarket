@@ -36,4 +36,10 @@ public class WaxDAOImpl extends AbstractDAO<Wax>implements WaxDAO {
 		return super.getEntityByID(Wax.class,id);
 	}
 
+	@Override
+	public void updateProduct(Wax product) {
+		super.addOrUpdate(product);
+		
+	}
+
 }

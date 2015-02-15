@@ -19,16 +19,22 @@
 					<div style="font-size: small;">&ensp;&ensp;&ensp;&ensp;&ensp;</div>
 				</td>
 				<td width="20%" style="text-align: left; font-size: small;">
-					<div>Login</div>
-					<div>Logout</div>
+					<div>Welcome, #{helperBean.currentMember!=null?helperBean.currentMember.firstName:""} #{helperBean.currentMember!=null?helperBean.currentMember.lastName:""}</div>
 					<div>
-						Items in Cart:
+						<p:commandLink id="ajax" actionListener="#{logoutHandlerBean.logout()}" style="text-decoration: none;">
+							<h:outputText value="Logout" style="color: #01ADEF; "/>
+						</p:commandLink>
+					</div>
+					<div>
 						<h:form id="countForm">
-							<p:outputLabel value="#{allProductsBean.numberOfItems()}" />
-							<p:remoteCommand update="countForm" name="updateCountForm" />
-							<p:commandButton actionListener="#{orderBean.makeOrder()}">
-								<p:graphicImage library="images" name="checkout.gif" />
-							</p:commandButton>
+							<!-- <p:graphicImage library="images" name="checkout.gif" /> -->
+							<p:outputLabel value="  Items in Cart: " style="color: white; font-size: 15px;"/>
+							<p:outputLabel value="#{allProductsBean.numberOfItems()}" style="color: yellow;"/>
+						</h:form>
+						 
+						<h:form>
+							<p:remoteCommand update=":countForm" name="updateCountForm" />
+							<p:commandButton value="Check out" onclick="PF('shopingCartDialog').show()"/>
 						</h:form>
 					</div>
 				</td>

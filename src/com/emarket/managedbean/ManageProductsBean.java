@@ -98,6 +98,7 @@ public class ManageProductsBean implements Serializable {
 			if (flowerType.getID() != null) {
 				activeHoney.setSource(flowerType);
 			}
+			activeHoney.setProductType("Honey");
 			activeHoney = emarketFacade.addNewHoneyProduct(activeHoney);
 			if (honeyList.contains(activeHoney) == false) {
 				honeyList.add(activeHoney);
@@ -118,7 +119,7 @@ public class ManageProductsBean implements Serializable {
 	public void addNewWaxProduct() {
 
 		try {
-
+			activeWax.setProductType("Wax");
 			activeWax = emarketFacade.addNewWaxProduct(activeWax);
 			if (waxList.contains(activeWax) == false) {
 				waxList.add(activeWax);
@@ -138,7 +139,7 @@ public class ManageProductsBean implements Serializable {
 	public void addNewMiscellaneousProduct() {
 
 		try {
-
+			activeMiscellaneous.setProductType("Miscellaneous");
 			activeMiscellaneous = emarketFacade
 					.addNewProduct(activeMiscellaneous);
 			if (miscellaneousList.contains(activeMiscellaneous) == false) {

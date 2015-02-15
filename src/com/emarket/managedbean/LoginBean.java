@@ -16,10 +16,6 @@ import com.emarket.general.EMarketException;
 @ViewScoped
 public class LoginBean implements Serializable {
 
-	/**
-	 * 
-	 */
-	// Construct alert thread bean
 
 	@EJB
 	EmarketFacade memberFacade;

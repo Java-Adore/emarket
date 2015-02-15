@@ -20,8 +20,12 @@
 					<div style="font-size: small;">&ensp;&ensp;&ensp;&ensp;&ensp;</div>
 				</td>
 				<td width="20%" style="text-align: left; font-size: small;">
-					<div>Login</div>
-					<div>Logout</div> <br />
+					<div>Welcome, #{helperBean.currentMember!=null?helperBean.currentMember.firstName:""} #{helperBean.currentMember!=null?helperBean.currentMember.lastName:""}</div>
+					<div>
+						<p:commandLink id="ajax" actionListener="#{logoutHandlerBean.logout()}" style="text-decoration: none;">
+							<h:outputText value="Logout" style="color: #01ADEF; "/>
+						</p:commandLink>
+					</div> <br />
 				</td>
 			</tr>
 			<tr style="font-size: 17px;">

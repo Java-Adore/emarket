@@ -85,3 +85,31 @@ body{
  .ui-panelgrid  tr{
    background:transparent !important;
  }
+
+.ui-outputlabel .ui-widget{
+	padding-left: 0px; margin-left: 0px;
+	color:red;
+}
+.shoppingCartDialog{
+	width: 80% !important;
+	height: 600px !important;
+}
+
+.scrollPanel{
+	width: 100% !important;
+	height: 550px !important;
+	overflow: auto !important;
+}
+
+.shoppingCartDialog .ui-dialog-content {
+  overflow: auto !important;
+}
+
+.shopingCartTable td {
+	border-color: black !important;
+	
+}
+.shopingCartTable tr{
+	background: blak !important;
+}
+

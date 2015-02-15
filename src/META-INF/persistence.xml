@@ -11,6 +11,7 @@
 		<class>com.emarket.domain.Honey</class>
 		<class>com.emarket.domain.Wax</class>
 		<class>com.emarket.domain.Miscellaneous</class> 
+		<class>com.emarket.domain.OrderItem</class> 
 
 
 

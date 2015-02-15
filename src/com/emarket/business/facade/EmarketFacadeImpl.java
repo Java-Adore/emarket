@@ -9,11 +9,11 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.emarket.business.service.MemberService;
+import com.emarket.business.service.OrderItemService;
 import com.emarket.business.service.ProductService;
 import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
 import com.emarket.domain.Miscellaneous;
-import com.emarket.domain.Order;
 import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
 import com.emarket.domain.ShoppingCart;
@@ -31,6 +31,9 @@ public class EmarketFacadeImpl implements EmarketFacade {
 	
 	@EJB
 	ProductService productService;
+	
+	@EJB
+	OrderItemService orderItemService;
 
 	@Override
 	public List<User> getAllUsers() {
@@ -135,13 +138,9 @@ public class EmarketFacadeImpl implements EmarketFacade {
 	}
 
 	@Override
-	public void handleShoppingCart(ShoppingCart shoppingCart , User user,boolean immediate) {
+	public void handleShoppingCart(ShoppingCart shoppingCart) {
 
-		Order order = new Order();
-		order.setOrderDate(new Date());
-		order.setUser(user);
-		
-		order = productService.addNewOrder(order);
+				
 		
 		Map<Integer,Product> map = new HashMap();
 		
@@ -153,15 +152,32 @@ public class EmarketFacadeImpl implements EmarketFacade {
 			
 			OrderItem orderItem = new OrderItem();
 			
-				orderItem.setAmount( shoppingCart.getOrders().get(p));
+			orderItem.setAmount( shoppingCart.getOrders().get(p));
 			
 			orderItem.setPrice(p.getPrice());
-			orderItem.setProduct(p);
-			orderItem.setOrder(order);
-			productService.addNewOrderItem(orderItem);
+			//orderItem.setProduct(p);
+			//productService.addNewOrderItem(orderItem);
 		}
 		
 	}
+
+	@Override
+	public Product getProduct(Product product) {
+		// TODO Auto-generated method stub
+		return productService.getProduct(product);
+	}
+
+	@Override
+	public OrderItem saveOrderItemInDB(OrderItem orderItem) {
+		return orderItemService.addNewOrderItem(orderItem);
+	}
+
+	@Override
+	public void updateproductAmount(Product product, Integer newAmount) {
+		// TODO Auto-generated method stub
+		productService.updateproductAmount(product, newAmount);
+	}
+
 
 	
 }

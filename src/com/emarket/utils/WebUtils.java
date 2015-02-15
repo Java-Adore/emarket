@@ -217,6 +217,14 @@ public class WebUtils {
 		}
 		;
 	}
+	public static void validateCurrentAdmin() {
+		if (getCurrentUser() == null && getCurrentUser().getRole()!=1) {
+
+			redirectTo(Constants.LOGIN_PAGE);
+
+		}
+		;
+	}
 
 	public static void fireExactInfoMessage(String message) {
 

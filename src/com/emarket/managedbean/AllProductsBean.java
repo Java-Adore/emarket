@@ -3,17 +3,15 @@ package com.emarket.managedbean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.hibernate.dialect.FirebirdDialect;
-
 import com.emarket.business.facade.EmarketFacade;
 import com.emarket.domain.*;
-import com.emarket.general.Constants;
 import com.emarket.utils.WebUtils;
 
 @ManagedBean
@@ -34,6 +32,9 @@ public class AllProductsBean implements Serializable {
 	private List<Product> allProducts;
 
 	private Product selectedProduct;
+	public static ShoppingCart currentShoppingCart;
+
+	public List<String> orderStatus;
 
 	@PostConstruct
 	public void init() {
@@ -48,6 +49,17 @@ public class AllProductsBean implements Serializable {
 		if (miscellaneousList != null && miscellaneousList.size() > 0)
 			allProducts.addAll(miscellaneousList);
 
+		orderStatus = new ArrayList<>();
+		
+		orderStatus.add("---- Select Status ----");
+		orderStatus.add(OrderStatus.COMPLETED.toString());
+		orderStatus.add("Not Completed");
+		
+//		int i = 0;
+//		for (OrderStatus status : OrderStatus.values()) {
+//			orderStatus[i] = status.toString();
+//			i++;
+//		}
 	}
 
 	public EmarketFacade getEmarketFacade() {
@@ -86,7 +98,7 @@ public class AllProductsBean implements Serializable {
 		return allProducts;
 	}
 
-	public void setAllProducts(List<Product> allProducts) { 
+	public void setAllProducts(List<Product> allProducts) {
 		this.allProducts = allProducts;
 	}
 
@@ -98,42 +110,45 @@ public class AllProductsBean implements Serializable {
 		this.selectedProduct = selectedProduct;
 	}
 
+	public List<String> getOrderStatus() {
+		return orderStatus;
+	}
+
 	public void addToCart(Product selectedProduct) {
 
-		ShoppingCart shoppingCart = (ShoppingCart) WebUtils
-				.extractFromSession(Constants.CURRENT_SHOPING_CART);
-		if (shoppingCart == null) {
-			shoppingCart = new ShoppingCart();
-
+		ShoppingCart shoppingCart = AllProductsBean.currentShoppingCart;
+		if (AllProductsBean.currentShoppingCart == null) {
+			AllProductsBean.currentShoppingCart = new ShoppingCart();
 		}
-		shoppingCart.addToCart(selectedProduct);
-		WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART, shoppingCart);	
+		AllProductsBean.currentShoppingCart.addToCart(selectedProduct);
+		// WebUtils.injectIntoSession(Constants.CURRENT_SHOPING_CART,
+		// shoppingCart);
 		WebUtils.invokeJavaScriptFunction("updateCountForm()");
 		WebUtils.fireInfoMessage("PRODUCT_ADDED_TO_SHOPPING_CART");
 
 	}
 
-	
-	public ShoppingCart getCurrentShoppingCart()
-	{
-		return (ShoppingCart)WebUtils.extractFromSession(Constants.CURRENT_SHOPING_CART);
-	}
-	
-	
-	public int  numberOfItems()
-	{
-		int count=0;
-		ShoppingCart shoppingCart = getCurrentShoppingCart();
-		if(shoppingCart!=null)
-		{
-			
-			
-			for (Integer i : shoppingCart.getOrders().values())
-			{
-				count +=i;
+	public ShoppingCart getCurrentShoppingCart() {
+		try {
+			// return
+			// (ShoppingCart)WebUtils.extractFromSession(Constants.CURRENT_SHOPING_CART);
+			if (currentShoppingCart == null) {
+				currentShoppingCart = new ShoppingCart();
+
+				currentShoppingCart.setCompleted(OrderStatus.EMPTY);
+
 			}
+
+		} catch (IllegalStateTransitionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return count;
+		return currentShoppingCart;
+	}
+
+	public int numberOfItems() {
+		
+		return getCurrentShoppingCart().getNumberOfItems();
 
 	}
 }

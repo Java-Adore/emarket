@@ -20,9 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 
 public class ShoppingCart implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private Long id;

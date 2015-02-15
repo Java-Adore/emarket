@@ -33,7 +33,8 @@
 
 							<p:commandLink update=":form:productDetail"
 								oncomplete="PF('ProductDialog').show()" title="View Detail">
-								<h:outputText style="margin:0 auto;" styleClass="ui-icon ui-icon-search"/>
+								<h:outputText style="margin:0 auto;"
+									styleClass="ui-icon ui-icon-search" />
 								<f:setPropertyActionListener value="#{product}"
 									target="#{allProductsBean.selectedProduct}" />
 							</p:commandLink>
@@ -42,8 +43,8 @@
 
 				</p:dataGrid>
 
-				<p:dialog header="Product Info" widgetVar="ProductDialog" modal="true"
-					showEffect="fade" hideEffect="fade" resizable="false">
+				<p:dialog header="Product Info" widgetVar="ProductDialog"
+					modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 					<p:outputPanel id="productDetail" style="text-align:center;">
 						<p:panelGrid columns="2"
 							rendered="#{not empty allProductsBean.selectedProduct}"
@@ -59,15 +60,124 @@
 							<h:outputText value="#{allProductsBean.selectedProduct.price} $" />
 
 							<h:outputText value="Description:" />
-							<h:outputText value="#{allProductsBean.selectedProduct.description}" />
+							<h:outputText
+								value="#{allProductsBean.selectedProduct.description}" />
 
 							<h:outputText value="" />
 							<p:commandButton id="addToCart" value="#{loc.ADD_TO_CART}"
 								ajax="false" update=":growlForm"
-								actionListener="#{allProductsBean.addToCart(allProductsBean.selectedProduct)}"  />
+								actionListener="#{allProductsBean.addToCart(allProductsBean.selectedProduct)}" />
 						</p:panelGrid>
 					</p:outputPanel>
 				</p:dialog>
+
+				<p:dialog header="Your Shopping Cart" widgetVar="shopingCartDialog"
+					modal="true" showEffect="fade" hideEffect="fade" resizable="false"
+					styleClass="shoppingCartDialog">
+					<p:scrollPanel styleClass="scrollPanel">
+					<p:outputPanel id="shopingCartDetail" style="text-align:center;">
+						<p:messages autoUpdate="true" id="msgs"/>
+						<p:panelGrid columns="1" columnClasses="label,value">
+							
+							<f:facet name="header">
+								<p:graphicImage name="images/mainImage.png" />
+							</f:facet>
+							<h:form id="shoppingCartForm">
+								<p:dataTable var="product"
+									value="#{orderBean.currentShoppingCart.orders.keySet()}"
+									styleClass="shopingCartTable"
+									emptyMessage="You didn't add any product to your cart yet. Please add products.">
+									<p:column headerText="Product Name">
+										<h:outputText value="#{product.name}" />
+									</p:column>
+
+									<p:column headerText="Product Description">
+										<h:outputText value="#{product.description}" />
+									</p:column>
+
+									<p:column headerText="Unit Price">
+										<h:outputText value="#{product.price}" />
+									</p:column>
+
+									<p:column headerText="Product Amount">
+										<h:outputText id="productAmount"
+											value="#{orderBean.currentShoppingCart.orders.get(product)}"
+											style="color: green;" />
+									</p:column>
+
+									<p:column headerText="Total price">
+										<h:outputText
+											value="#{product.price} * #{orderBean.currentShoppingCart.orders.get(product)} = " />
+										<h:outputText
+											value="#{product.price * orderBean.currentShoppingCart.orders.get(product)}"
+											style="color: green;" />
+									</p:column>
+
+									<p:column headerText="Edit">
+										<p:commandButton id="editProduct" value="Edit" ajax="true"
+											oncomplete="PF('ProductToEditDialog').show()" update="@this :countForm :form:productToEditDetails"
+											actionListener="#{orderBean.initialProductAndAmount(product)}" />
+									</p:column>
+									<p:column headerText="Delete">
+										<p:commandButton id="deleteProduct" value="Delete" ajax="true"
+											update="@form :countForm" process="@this"
+											actionListener="#{orderBean.deleteProductInCart(product)}" />
+									</p:column>
+								</p:dataTable>
+								
+								<br /><br />
+								<h:outputLabel for="orderStatus" value="Order Status" rendered="#{orderBean.currentShoppingCart.orders.size() > 0}"/>
+            					<h:selectOneMenu id="status" value="#{orderBean.orderStatus}" rendered="#{orderBean.currentShoppingCart.orders.size() > 0}">
+  									<!-- use property name not method name -->
+  									<f:selectItems value="#{allProductsBean.orderStatus}" />
+  									<f:ajax listener="#{orderBean.orderStatusChanged()}" />
+								</h:selectOneMenu>
+
+								<p:commandButton id="checkOut" value="Check out" ajax="true"
+											update="@form :countForm" process="@this" rendered="#{orderBean.currentShoppingCart.orders.size() > 0}"
+											actionListener="#{orderBean.checkOut()}" />
+								
+								<br /><br />
+								<!-- rendered="#{not empty orderBean.currentShoppingCart}" -->
+							</h:form>
+						</p:panelGrid>
+					</p:outputPanel>
+					</p:scrollPanel>
+					
+				</p:dialog>
+				
+				
+				<p:dialog header="Product Info" widgetVar="ProductToEditDialog"
+					modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="productToEditDetails" style="text-align:center;">
+						
+						<p:panelGrid columns="2"
+							columnClasses="label,value">
+							<f:facet name="header">
+								<p:graphicImage name="images/mainImage.png" />
+							</f:facet>
+
+							<h:outputText value="Name:" />
+							<h:outputText value="#{orderBean.productToEdit.name}" />
+
+							<h:outputText value="Price:" />
+							<h:outputText value="#{orderBean.productToEdit.price} $" />
+							
+							<h:outputText value="Current Amount:" />
+							<h:outputText value="#{orderBean.currentShoppingCart.orders.get(orderBean.productToEdit)}" style="color: green;"/>
+							
+							<h:outputText value="Amount:" />							
+        					<p:spinner id="prefix" value="#{orderBean.productToEditAmount}" prefix="$" min="1" />
+
+							<p:commandButton id="editProductAmountInCart" value="Edit Amount"
+								ajax="true" update="@this :countForm form:shopingCartDetail form:productToEditDetails"
+								actionListener="#{orderBean.editProductAmountInCart(orderBean.productToEdit, orderBean.productToEditAmount)}" />
+						</p:panelGrid>
+					</p:outputPanel>
+					
+				</p:dialog>
+				
+				
 			</h:form>
 		</center>
 	</ui:define>

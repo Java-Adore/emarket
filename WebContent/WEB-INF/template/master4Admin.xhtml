@@ -20,8 +20,11 @@
 
 </h:head>
 <f:view contentType="text/html">
-
+	
 	<h:body dir="#{loc.dir}">
+		<h:form>
+			#{helperBean.validateCurrentAdmin()}
+		</h:form>
 		<div id="mainDiv">
 			<h:form id="growl">
 				<p:growl />

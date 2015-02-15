@@ -35,4 +35,10 @@ public class MiscellaneousDAOImpl extends AbstractDAO<Miscellaneous>implements M
 	public Miscellaneous getProductById(Long id) {
 		return super.getEntityByID(Miscellaneous.class,id);
 	}
+
+	@Override
+	public void updateProduct(Miscellaneous product) {
+		super.addOrUpdate(product);
+		
+	}
 }

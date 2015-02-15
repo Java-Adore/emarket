@@ -38,4 +38,10 @@ public class HonyDAOImpl extends AbstractDAO<Honey>implements HoneyDAO {
 		return super.getEntityByID(Honey.class,id);
 	}
 
+	@Override
+	public void updateProduct(Honey product) {
+		// TODO Auto-generated method stub
+		super.addOrUpdate(product);
+	}
+
 }

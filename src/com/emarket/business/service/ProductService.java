@@ -8,7 +8,6 @@ import javax.ejb.Local;
 import com.emarket.domain.Flower;
 import com.emarket.domain.Honey;
 import com.emarket.domain.Miscellaneous;
-import com.emarket.domain.Order;
 import com.emarket.domain.OrderItem;
 import com.emarket.domain.Product;
 import com.emarket.domain.Wax;
@@ -36,10 +35,9 @@ public interface ProductService extends Serializable {
 
 	Honey addNewHoneyProduct(Honey product);
 
-	Order addNewOrder(Order order);
-
-	void addNewOrderItem(OrderItem orderItem);
 	
 	Product getProduct(Product product);
+
+	void updateproductAmount(Product product, Integer newAmount);
 
 }
